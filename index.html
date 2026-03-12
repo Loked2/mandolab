@@ -11,8 +11,7 @@
     :root {
       --black: #0a0a0a;
       --white: #f5f0e8;
-      --orange: #3ddc84;
-      --orange-dim: #2aab62;
+      --green: #3ddc84;
       --grey: #1a1a1a;
       --mid: #3a3a3a;
       --light-grey: #888;
@@ -21,14 +20,17 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
+      background-color: var(--black);
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 50%),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 50%);
+      background-size: 6px 6px;
       color: var(--white);
       font-family: 'Lora', serif;
       font-weight: 400;
       overflow-x: hidden;
     }
 
-    /* NOISE OVERLAY */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -36,13 +38,11 @@
       pointer-events: none; z-index: 100; opacity: 0.35;
     }
 
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 50;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.5rem 3rem;
-      mix-blend-mode: normal;
     }
     nav::after {
       content: '';
@@ -53,11 +53,10 @@
     .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.6rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       color: var(--white);
       text-decoration: none;
     }
-    .nav-logo span { color: var(--orange); }
     .nav-links { display: flex; gap: 2.5rem; }
     .nav-links a {
       font-family: 'Space Mono', monospace;
@@ -73,13 +72,12 @@
       content: '';
       position: absolute; bottom: -4px; left: 0;
       width: 0; height: 1px;
-      background: var(--orange);
+      background: var(--green);
       transition: width 0.3s ease;
     }
     .nav-links a:hover { color: var(--white); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex; flex-direction: column;
@@ -88,36 +86,24 @@
       position: relative;
       overflow: hidden;
     }
-
-    .hero-bg-number {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(18rem, 35vw, 40rem);
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(232,86,42,0.07);
-      letter-spacing: -0.05em;
-      pointer-events: none;
-      white-space: nowrap;
-      animation: floatText 8s ease-in-out infinite;
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(61,220,132,0.04) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
     }
-
-    @keyframes floatText {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-20px); }
-    }
+    #hero > * { position: relative; z-index: 1; }
 
     .hero-tag {
       font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--green);
       margin-bottom: 1.5rem;
       animation: fadeUp 0.8s ease both;
     }
-
     .hero-name {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(5rem, 14vw, 14rem);
@@ -125,24 +111,6 @@
       letter-spacing: -0.02em;
       animation: fadeUp 0.8s 0.1s ease both;
     }
-    .hero-name .outline {
-      -webkit-text-stroke: 2px var(--white);
-      color: transparent;
-    }
-
-    .hero-sub {
-      margin-top: 2rem;
-      display: flex; align-items: center; gap: 2rem;
-      animation: fadeUp 0.8s 0.25s ease both;
-    }
-    .hero-sub p {
-      font-size: 1rem;
-      color: var(--light-grey);
-      max-width: 360px;
-      line-height: 1.6;
-    }
-    .hero-line { width: 60px; height: 1px; background: var(--orange); flex-shrink: 0; }
-
     .hero-scroll {
       position: absolute; bottom: 2.5rem; right: 3rem;
       display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
@@ -158,26 +126,18 @@
     }
     .scroll-line {
       width: 1px; height: 60px;
-      background: linear-gradient(to bottom, var(--orange), transparent);
+      background: linear-gradient(to bottom, var(--green), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
     @keyframes scrollPulse {
       0%,100% { opacity: 1; transform: scaleY(1); }
       50% { opacity: 0.4; transform: scaleY(0.7); }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* DIAGONAL DIVIDER */
-    .divider {
-      height: 80px; overflow: hidden; margin-top: -1px;
-    }
-    .divider svg { display: block; width: 100%; height: 100%; }
-
-    /* SECTION BASE */
     section { padding: 7rem 3rem; }
 
     .section-label {
@@ -185,31 +145,27 @@
       font-size: 0.65rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--green);
       margin-bottom: 1rem;
       display: flex; align-items: center; gap: 1rem;
     }
     .section-label::before {
       content: '';
       width: 30px; height: 1px;
-      background: var(--orange);
+      background: var(--green);
     }
-
     .section-title {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 7vw, 7rem);
+      font-size: clamp(4.5rem, 10vw, 10rem);
       line-height: 1;
-      letter-spacing: 0.02em;
     }
 
-    /* ABOUT */
-    #about { background: var(--black); }
+    #about { background: rgba(10,10,10,0.97); }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1fr;
+      max-width: 750px;
       margin-top: 4rem;
-      align-items: start;
     }
     .about-text p {
       font-size: 1.05rem;
@@ -218,7 +174,7 @@
       margin-bottom: 1.5rem;
     }
     .about-text p strong { color: var(--white); font-weight: 600; }
-    .about-text p em { color: var(--orange); font-style: normal; }
+    .about-text p em { color: var(--green); font-style: normal; }
 
     .about-stats {
       display: grid;
@@ -236,7 +192,7 @@
       content: '';
       position: absolute; top: 0; left: 0;
       width: 3px; height: 0;
-      background: var(--orange);
+      background: var(--green);
       transition: height 0.4s ease;
     }
     .stat-box:hover { background: #1f1f1f; }
@@ -245,7 +201,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 3.5rem;
       line-height: 1;
-      color: var(--orange);
+      color: var(--green);
     }
     .stat-label {
       font-family: 'Space Mono', monospace;
@@ -271,13 +227,45 @@
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
     .skill-tag:hover {
-      border-color: var(--orange);
+      border-color: var(--green);
       color: var(--white);
-      background: rgba(232,86,42,0.08);
+      background: rgba(61,220,132,0.08);
     }
 
-    /* PROJECTS */
-    #projects { background: var(--grey); }
+    .coursework {
+      margin-top: 2.5rem;
+    }
+    .course-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .course-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--mid);
+    }
+    .course-item:first-of-type { border-top: 1px solid var(--mid); }
+    .course-code {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      flex-shrink: 0;
+      width: 50px;
+    }
+    .course-name {
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+    .course-name em { color: var(--light-grey); font-style: italic; font-size: 0.8rem; }
+
+    #projects { background: rgba(18,18,18,0.98); }
     .projects-grid {
       margin-top: 4rem;
       display: grid;
@@ -290,12 +278,11 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: background 0.3s;
     }
     .project-card::after {
       content: '';
       position: absolute; inset: 0;
-      background: var(--orange);
+      background: var(--green);
       transform: translateY(100%);
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
       z-index: 0;
@@ -304,10 +291,8 @@
     .project-card:hover .project-num,
     .project-card:hover .project-name,
     .project-card:hover .project-desc,
-    .project-card:hover .project-tags,
     .project-card:hover .project-arrow { color: var(--black); }
     .project-card:hover .project-tag-item { border-color: rgba(0,0,0,0.3); color: var(--black); }
-
     .project-card > * { position: relative; z-index: 1; }
 
     .project-num {
@@ -318,11 +303,9 @@
       transition: color 0.3s;
     }
     .project-card:hover .project-num { color: rgba(0,0,0,0.12); }
-
     .project-name {
       font-family: 'DM Serif Display', serif;
       font-size: 1.8rem;
-      letter-spacing: 0.04em;
       margin-top: 0.5rem;
       line-height: 1.1;
       transition: color 0.3s;
@@ -352,7 +335,7 @@
     .project-arrow {
       margin-top: 2rem;
       font-size: 1.5rem;
-      color: var(--orange);
+      color: var(--green);
       transition: color 0.3s, transform 0.3s;
       display: inline-block;
     }
@@ -361,9 +344,8 @@
       transform: translate(4px, -4px);
     }
 
-    /* CONTACT */
     #contact {
-      background: var(--black);
+      background: rgba(10,10,10,0.97);
       text-align: center;
     }
     .contact-inner { max-width: 700px; margin: 0 auto; }
@@ -374,19 +356,13 @@
       margin: 2rem 0;
     }
     .contact-big .outline {
-      -webkit-text-stroke: 2px var(--white);
-      color: transparent;
+      color: var(--white);
     }
     .contact-sub {
       color: var(--light-grey);
       font-size: 1rem;
       line-height: 1.7;
       margin-bottom: 3rem;
-    }
-
-    .contact-links {
-      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-      margin-bottom: 4rem;
     }
     .contact-btn {
       font-family: 'Space Mono', monospace;
@@ -397,14 +373,17 @@
       border: 1px solid;
       text-decoration: none;
       transition: all 0.3s;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
     }
     .contact-btn.primary {
-      background: var(--orange);
-      border-color: var(--orange);
+      background: var(--green);
+      border-color: var(--green);
       color: var(--black);
     }
-    .contact-btn.primary:hover { background: transparent; color: var(--orange); }
+    .contact-btn.primary:hover { background: transparent; color: var(--green); }
     .contact-btn.secondary {
       background: transparent;
       border-color: var(--mid);
@@ -412,20 +391,7 @@
     }
     .contact-btn.secondary:hover { border-color: var(--white); color: var(--white); }
 
-    .contact-info {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--light-grey);
-    }
-    .contact-info a { color: var(--orange); text-decoration: none; }
-    .contact-info a:hover { text-decoration: underline; }
-
-    /* CONTACT FORM */
-    .contact-form {
-      text-align: left;
-      margin-bottom: 2.5rem;
-    }
+    .contact-form { text-align: left; margin-bottom: 2.5rem; }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -433,10 +399,7 @@
       margin-bottom: 1rem;
     }
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
+      display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem;
     }
     .form-group label {
       font-family: 'Space Mono', monospace;
@@ -460,23 +423,47 @@
     .form-group input::placeholder,
     .form-group textarea::placeholder { color: #555; }
     .form-group input:focus,
-    .form-group textarea:focus { border-color: var(--orange); }
+    .form-group textarea:focus { border-color: var(--green); }
     .form-bottom {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;
     }
-    .form-side-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .form-bottom { flex-direction: column; align-items: stretch; }
-      .form-side-links { flex-direction: column; }
+    .contact-info {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--light-grey);
+      margin-top: 2rem;
     }
 
-        /* FOOTER */
-    footer {
+    .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      margin-top: 0.5rem;
+    }
+    .course-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--mid);
+    }
+    .course-item:first-child { border-top: 1px solid var(--mid); }
+    .course-code {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      flex-shrink: 0;
+      width: 50px;
+    }
+    .course-name {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+        footer {
       border-top: 1px solid var(--grey);
       padding: 2rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
@@ -487,9 +474,8 @@
       letter-spacing: 0.15em;
       color: var(--mid);
     }
-    .footer-dot { color: var(--orange); }
+    .footer-dot { color: var(--green); }
 
-    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -500,14 +486,43 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.25rem 1.5rem; }
       section { padding: 5rem 1.5rem; }
       #hero { padding: 0 1.5rem 4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      margin-top: 0.5rem;
+    }
+    .course-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--mid);
+    }
+    .course-item:first-child { border-top: 1px solid var(--mid); }
+    .course-code {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      flex-shrink: 0;
+      width: 50px;
+    }
+    .course-name {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+        footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-bottom { flex-direction: column; align-items: stretch; }
     }
     @media (max-width: 600px) {
       .nav-links { display: none; }
@@ -516,9 +531,8 @@
 </head>
 <body>
 
-<!-- NAV -->
   <nav>
-    <a href="#hero" class="nav-logo">A<span>.</span>R</a>
+    <a href="#hero" class="nav-logo">AR</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -526,37 +540,26 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg-number">ME</div>
     <div class="hero-tag">Mechanical Engineering · Cal Poly SLO · 2026</div>
     <h1 class="hero-name">
       ARMANDO<br>
       RAMIREZ
     </h1>
-
     <div class="hero-scroll">
       <div class="scroll-line"></div>
       <span>Scroll</span>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-label">About Me</div>
     <h2 class="section-title reveal">ABOUT<br>ME</h2>
-
     <div class="about-grid">
       <div class="about-text reveal reveal-delay-1">
-        <p>
-          I'm a <strong>Mechanical Engineering student at Cal Poly SLO</strong>, graduating December 2026 with a focus on <em>composite structures and advanced manufacturing</em>. I work at the intersection of analysis and hands-on fabrication.
-        </p>
-        <p>
-          With <strong>Cal Poly Racing's Baja SAE team</strong>, I've designed and built vacuum-infused Carbon-Kevlar skid plates, machined aluminum steering wheel inserts to tight tolerances, and fabricated safety components that helped the team pass technical inspection first at the 2025 competition.
-        </p>
-        <p>
-          My composites testing work using <em>Toray TC250 pre-preg</em> matched analytical micromechanics predictions within 2% — and my SAMPE I-beam hit <strong>9kN at just 312g</strong>. I build things that perform.
-        </p>
+        <p>I'm a <strong>Mechanical Engineering student at Cal Poly SLO</strong>, graduating December 2026 and specializing in <em>composite structures and manufacturing</em>. I work at the intersection of hands-on fabrication and structural analysis.</p>
+        <p>During the <strong>2024–2025 season</strong> with <em>Cal Poly Racing's Baja SAE team</em>, I manufactured composite components including a Carbon-Kevlar skid plate, steering wheel inserts, and safety hardware — helping the team achieve 6th overall at Baja SAE Arizona 2025 and pass technical inspection first with no safety concerns.</p>
+        <p>My senior capstone is a <em>3D-printed competition flying wing aircraft</em> designed for high glide ratio. I'm also actively pursuing internship opportunities in <em>aerospace, automotive, and advanced manufacturing</em>.</p>
         <div class="skills-strip">
           <span class="skill-tag">Composites</span>
           <span class="skill-tag">SolidWorks</span>
@@ -569,42 +572,36 @@
           <span class="skill-tag">ASTM Testing</span>
           <span class="skill-tag">GD&T</span>
         </div>
-      </div>
-
-      <div class="about-stats reveal reveal-delay-2">
-        <div class="stat-box">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">Years of hands-on<br>engineering experience</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">CLT</div>
-          <div class="stat-label">Classical Laminate<br>Theory specialist</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">SAE</div>
-          <div class="stat-label">Baja SAE Composites<br>team member</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">Dec<br>'26</div>
-          <div class="stat-label">Graduation —<br>Cal Poly SLO</div>
+        <div class="coursework">
+          <div class="course-label">Relevant Coursework</div>
+          <div class="course-item">
+            <span class="course-code">ME412</span>
+            <span class="course-name">Composite Materials Analysis &amp; Design</span>
+          </div>
+          <div class="course-item">
+            <span class="course-code">ME161</span>
+            <span class="course-name">Composite Materials Manufacturing</span>
+          </div>
+          <div class="course-item">
+            <span class="course-code">ME470</span>
+            <span class="course-name">Fracture Mechanics &amp; Fatigue <em>(Selected Topics)</em></span>
+          </div>
         </div>
       </div>
+      </div>
+    </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label">Projects</div>
     <h2 class="section-title reveal">PROJECTS</h2>
-
     <div class="projects-grid">
 
       <div class="project-card reveal reveal-delay-1">
         <div class="project-num">01</div>
         <div class="project-name">Composite Skid Plate</div>
-        <div class="project-desc">
-          Fabricated an impact-resistant three-piece vehicle skid plate for off-road racing. Carbon-Kevlar skid plate with Rohacell core manufactured using vacuum infusion — 43% lighter than aluminum equivalent. Achieved 6th overall at Baja SAE Arizona 2025 with no significant structural damage.
-        </div>
+        <div class="project-desc">Fabricated an impact-resistant three-piece vehicle skid plate for off-road racing. Carbon-Kevlar with Rohacell core via vacuum infusion — 43% lighter than aluminum. Achieved 6th overall at Baja SAE Arizona 2025 with no structural damage.</div>
         <div class="project-tags">
           <span class="project-tag-item">Vacuum Infusion</span>
           <span class="project-tag-item">Carbon-Kevlar</span>
@@ -617,9 +614,7 @@
       <div class="project-card reveal reveal-delay-2">
         <div class="project-num">02</div>
         <div class="project-name">SAMPE Composite I-Beam</div>
-        <div class="project-desc">
-          Designed and manufactured the lightest composite I-beam to achieve the highest point load in three-point bending. Unidirectional pre-preg carbon fiber tailored for peak stress direction, with Nomex sandwich core. Achieved 9kN load at just 312g.
-        </div>
+        <div class="project-desc">Designed and manufactured the lightest composite I-beam for maximum point load in three-point bending. Unidirectional pre-preg carbon fiber with Nomex sandwich core. Achieved 9kN load at just 312g.</div>
         <div class="project-tags">
           <span class="project-tag-item">Pre-preg Carbon</span>
           <span class="project-tag-item">Nomex Core</span>
@@ -632,9 +627,7 @@
       <div class="project-card reveal reveal-delay-3">
         <div class="project-num">03</div>
         <div class="project-name">CF Miata Radiator Cowl</div>
-        <div class="project-desc">
-          Designing and fabricating a lightweight carbon fiber cowl cover to direct increased airflow through the radiator of an NA Mazda Miata. Carbon-fiber pre-preg plate cured to final dimensions with holes and cutouts created via water jet. Currently in progress.
-        </div>
+        <div class="project-desc">Designing and fabricating a lightweight carbon fiber cowl cover to direct increased airflow through the radiator of an NA Mazda Miata. Pre-preg plate cured to final dimensions with water jet cutouts. Currently in progress.</div>
         <div class="project-tags">
           <span class="project-tag-item">Carbon Fiber</span>
           <span class="project-tag-item">Pre-preg Layup</span>
@@ -647,9 +640,7 @@
       <div class="project-card reveal reveal-delay-1">
         <div class="project-num">04</div>
         <div class="project-name">Steering Wheel Inserts</div>
-        <div class="project-desc">
-          Manufactured six aluminum inserts for a composite steering wheel using a manual lathe. Parts turned and faced to within 0.005" of drawing dimensions. Steering wheel was mounted and used in the 2025 Baja SAE competition with no damage to the composite structure.
-        </div>
+        <div class="project-desc">Manufactured six aluminum inserts for a composite steering wheel using a manual lathe. Parts turned and faced to within 0.005" of drawing dimensions. Used in the 2025 Baja SAE competition with no damage to the composite structure.</div>
         <div class="project-tags">
           <span class="project-tag-item">Manual Lathe</span>
           <span class="project-tag-item">Aluminum Machining</span>
@@ -662,9 +653,7 @@
       <div class="project-card reveal reveal-delay-2">
         <div class="project-num">05</div>
         <div class="project-name">ASTM D3039/D3518 Testing</div>
-        <div class="project-desc">
-          Fabricated and tested unidirectional composite samples using Toray TC250 infused pre-preg to determine mean strength properties per ASTM standards. Samples tested in Instron — experimental results matched analytical micromechanics predictions within 2% error.
-        </div>
+        <div class="project-desc">Fabricated and tested unidirectional composite samples using Toray TC250 infused pre-preg. Tested in Instron — experimental results matched analytical micromechanics predictions within 2% error.</div>
         <div class="project-tags">
           <span class="project-tag-item">ASTM D3039</span>
           <span class="project-tag-item">ASTM D3518</span>
@@ -677,9 +666,7 @@
       <div class="project-card reveal reveal-delay-3">
         <div class="project-num">06</div>
         <div class="project-name">Fire Ext. Tabs & Headrest</div>
-        <div class="project-desc">
-          Designed and fabricated safety components to meet SAE competition requirements. Aluminum backplate for SFI foam upholstery cut via water jet; tabs water jet from 0.125" 4340 chromoly steel and welded to chassis. Cal Poly Racing was first through technical inspection at 2025 Baja SAE.
-        </div>
+        <div class="project-desc">Designed and fabricated safety components to meet SAE requirements. Aluminum backplate cut via water jet; tabs from 0.125" 4340 chromoly steel welded to chassis. Cal Poly Racing was first through technical inspection at 2025 Baja SAE.</div>
         <div class="project-tags">
           <span class="project-tag-item">Water Jet</span>
           <span class="project-tag-item">4340 Chromoly</span>
@@ -692,17 +679,15 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
       <div class="section-label" style="justify-content:center;">Get In Touch</div>
       <div class="contact-big reveal">
-        LET'S<br><span class="outline">BUILD</span><br>SOMETHING
+        CONTACT<br><span class="outline">ME</span>
       </div>
       <p class="contact-sub reveal reveal-delay-1">
-        I'm actively seeking internships in aerospace, automotive, and advanced manufacturing — especially in composites and structural engineering. Based in SLO, targeting the California aerospace corridor.
+        I'm actively seeking internships in aerospace, automotive, and advanced manufacturing — especially in composites and structural engineering.
       </p>
-
       <form class="contact-form" action="https://formspree.io/f/xojkdrbg" method="POST">
         <div class="form-row">
           <div class="form-group">
@@ -720,58 +705,27 @@
         </div>
         <div class="form-bottom">
           <button type="submit" class="contact-btn primary">Send Message ↗</button>
-          <div class="form-side-links">
-            <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" class="contact-btn secondary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
-          </div>
+          <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" class="contact-btn secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
         </div>
       </form>
-
-      <div class="contact-info reveal reveal-delay-3">
-        <p>Cal Poly SLO · San Luis Obispo, CA · Open to relocation</p>
-      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Armando Ramirez <span class="footer-dot">·</span> mandolab.com</p>
+    <p>© 2026 Armando Ramirez <span class="footer-dot">·</span> mandolab.com</p>
     <p>Cal Poly SLO <span class="footer-dot">·</span> Dec 2026</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // CURSOR
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let rx = 0, ry = 0, mx = 0, my = 0;
-
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-    function animateCursor() {
-      rx += (mx - rx) * 0.15;
-      ry += (my - ry) * 0.15;
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
-      ring.style.left   = rx + 'px';
-      ring.style.top    = ry + 'px';
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    document.querySelectorAll('a, button, .project-card, .stat-box, .skill-tag').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '20px'; cursor.style.height = '20px';
-        ring.style.width = '60px'; ring.style.height = '60px';
-        ring.style.borderColor = 'rgba(61,220,132,0.8)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '12px'; cursor.style.height = '12px';
-        ring.style.width = '40px'; ring.style.height = '40px';
-        ring.style.borderColor = 'rgba(61,220,132,0.5)';
-      });
-    });
-
-    // SCROLL REVEAL
+  <script>
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
