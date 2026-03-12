@@ -436,7 +436,63 @@
       margin-top: 2rem;
     }
 
-    .course-list {
+    .more-work {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--mid);
+    }
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .more-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .more-num {
+      color: var(--green);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+    .more-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .more-desc {
+      font-size: 0.85rem;
+      color: var(--light-grey);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .more-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    @media (max-width: 900px) {
+      .more-grid { grid-template-columns: 1fr; }
+    }
+
+        .skill-category {
+      width: 100%;
+      margin-bottom: 1.25rem;
+    }
+    .skill-category-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .skill-tags-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+
+        .course-list {
       display: flex;
       flex-direction: column;
       gap: 0px;
@@ -493,7 +549,63 @@
       #hero { padding: 0 1.5rem 4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      .course-list {
+      .more-work {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--mid);
+    }
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .more-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .more-num {
+      color: var(--green);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+    .more-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .more-desc {
+      font-size: 0.85rem;
+      color: var(--light-grey);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .more-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    @media (max-width: 900px) {
+      .more-grid { grid-template-columns: 1fr; }
+    }
+
+        .skill-category {
+      width: 100%;
+      margin-bottom: 1.25rem;
+    }
+    .skill-category-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .skill-tags-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+
+        .course-list {
       display: flex;
       flex-direction: column;
       gap: 0px;
@@ -562,16 +674,18 @@
         <p>During the <strong>2024–2025 season</strong> with <em>Cal Poly Racing's Baja SAE team</em>, I manufactured composite components including a Carbon-Kevlar skid plate, steering wheel inserts, and safety hardware — helping the team achieve 6th overall at Baja SAE Arizona 2025 and pass technical inspection first with no safety concerns.</p>
         <p>My senior capstone is a <em>3D-printed competition flying wing aircraft</em> designed for high glide ratio. I'm also actively pursuing internship opportunities in <em>aerospace, automotive, and advanced manufacturing</em>.</p>
         <div class="skills-strip">
-          <span class="skill-tag">Composites</span>
-          <span class="skill-tag">SolidWorks</span>
+          <span class="skill-tag">ANSYS ACP</span>
+          <span class="skill-tag">ANSYS Static Structural</span>
+          <span class="skill-tag">XFLR5</span>
           <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">SolidWorks</span>
+          <span class="skill-tag">Fusion 360</span>
           <span class="skill-tag">CLT / ABD Matrix</span>
+          <span class="skill-tag">Vacuum Infusion</span>
           <span class="skill-tag">Wet Layup</span>
-          <span class="skill-tag">FEA</span>
-          <span class="skill-tag">Arduino</span>
+          <span class="skill-tag">Pre-preg Layup</span>
           <span class="skill-tag">3D Printing</span>
           <span class="skill-tag">ASTM Testing</span>
-          <span class="skill-tag">GD&T</span>
         </div>
         <div class="coursework">
           <div class="course-label">Relevant Coursework</div>
@@ -601,8 +715,34 @@
 
       <div class="project-card reveal reveal-delay-1">
         <div class="project-num">01</div>
+        <div class="project-name">Composite Footplate</div>
+        <div class="project-desc">Designed and tested a composite sandwich panel footplate for the Baja SAE vehicle. Three plies of carbon fiber on each face with a Nomex honeycomb core. Ran ANSYS ACP to simulate driver foot loading, and conducted 3-point bend testing on four candidate material configurations before selecting CF/Nomex.</div>
+        <div class="project-tags">
+          <span class="project-tag-item">ANSYS ACP</span>
+          <span class="project-tag-item">Nomex Honeycomb</span>
+          <span class="project-tag-item">3-Point Bend</span>
+          <span class="project-tag-item">Baja SAE</span>
+        </div>
+        <div class="project-arrow">↗&#xFE0E;</div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-num">02</div>
+        <div class="project-name">3D-Printed Flying Wing</div>
+        <div class="project-desc">Senior capstone RC flying wing aircraft optimized for high glide ratio. Used XFLR5 to compare five airfoils (MH60, MH45, SD7037, Clark Y, E325), ran ASTM D638 tensile testing to characterize PLA, and applied experimental values in ANSYS Static Structural FEA on the wing spars.</div>
+        <div class="project-tags">
+          <span class="project-tag-item">XFLR5</span>
+          <span class="project-tag-item">ANSYS Static Structural</span>
+          <span class="project-tag-item">ASTM D638</span>
+          <span class="project-tag-item">FDM</span>
+        </div>
+        <div class="project-arrow">↗&#xFE0E;</div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-num">03</div>
         <div class="project-name">Composite Skid Plate</div>
-        <div class="project-desc">Fabricated an impact-resistant three-piece vehicle skid plate for off-road racing. Carbon-Kevlar with Rohacell core via vacuum infusion — 43% lighter than aluminum. Achieved 6th overall at Baja SAE Arizona 2025 with no structural damage.</div>
+        <div class="project-desc">Fabricated an impact-resistant three-piece skid plate for off-road racing via vacuum infusion. Carbon-Kevlar with Rohacell core — 43% lighter than aluminum equivalent. Achieved 6th overall at Baja SAE Arizona 2025 with no structural damage.</div>
         <div class="project-tags">
           <span class="project-tag-item">Vacuum Infusion</span>
           <span class="project-tag-item">Carbon-Kevlar</span>
@@ -612,41 +752,15 @@
         <div class="project-arrow">↗&#xFE0E;</div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-num">02</div>
-        <div class="project-name">SAMPE Composite I-Beam</div>
-        <div class="project-desc">Designed and manufactured the lightest composite I-beam for maximum point load in three-point bending. Unidirectional pre-preg carbon fiber with Nomex sandwich core. Achieved 9kN load at just 312g.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">Pre-preg Carbon</span>
-          <span class="project-tag-item">Nomex Core</span>
-          <span class="project-tag-item">Three-Point Bend</span>
-          <span class="project-tag-item">SAMPE</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-num">03</div>
-        <div class="project-name">CF Miata Radiator Cowl</div>
-        <div class="project-desc">Designing and fabricating a lightweight carbon fiber cowl cover to direct increased airflow through the radiator of an NA Mazda Miata. Pre-preg plate cured to final dimensions with water jet cutouts. Currently in progress.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">Carbon Fiber</span>
-          <span class="project-tag-item">Pre-preg Layup</span>
-          <span class="project-tag-item">Water Jet</span>
-          <span class="project-tag-item">In Progress</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
       <div class="project-card reveal reveal-delay-1">
         <div class="project-num">04</div>
-        <div class="project-name">Steering Wheel Inserts</div>
-        <div class="project-desc">Manufactured six aluminum inserts for a composite steering wheel using a manual lathe. Parts turned and faced to within 0.005" of drawing dimensions. Used in the 2025 Baja SAE competition with no damage to the composite structure.</div>
+        <div class="project-name">SAMPE Composite I-Beam</div>
+        <div class="project-desc">ME161 project — manufactured the lightest composite I-beam to achieve maximum point load in three-point bending. Unidirectional pre-preg carbon fiber layup with Nomex sandwich core. Achieved 9kN load at just 312g.</div>
         <div class="project-tags">
-          <span class="project-tag-item">Manual Lathe</span>
-          <span class="project-tag-item">Aluminum Machining</span>
-          <span class="project-tag-item">GD&T</span>
-          <span class="project-tag-item">Baja SAE</span>
+          <span class="project-tag-item">Pre-preg UD Carbon</span>
+          <span class="project-tag-item">Nomex Core</span>
+          <span class="project-tag-item">ME161</span>
+          <span class="project-tag-item">SAMPE</span>
         </div>
         <div class="project-arrow">↗&#xFE0E;</div>
       </div>
@@ -654,29 +768,96 @@
       <div class="project-card reveal reveal-delay-2">
         <div class="project-num">05</div>
         <div class="project-name">ASTM D3039/D3518 Testing</div>
-        <div class="project-desc">Fabricated and tested unidirectional composite samples using Toray TC250 infused pre-preg. Tested in Instron — experimental results matched analytical micromechanics predictions within 2% error.</div>
+        <div class="project-desc">Fabricated and tested unidirectional composite samples using Toray TC250 infused pre-preg to determine mean strength properties per ASTM standards. Tested in Instron — experimental results matched analytical micromechanics predictions within 2% error.</div>
         <div class="project-tags">
           <span class="project-tag-item">ASTM D3039</span>
           <span class="project-tag-item">ASTM D3518</span>
           <span class="project-tag-item">Toray TC250</span>
-          <span class="project-tag-item">Instron Testing</span>
+          <span class="project-tag-item">Instron</span>
         </div>
         <div class="project-arrow">↗&#xFE0E;</div>
       </div>
 
       <div class="project-card reveal reveal-delay-3">
         <div class="project-num">06</div>
-        <div class="project-name">Fire Ext. Tabs & Headrest</div>
-        <div class="project-desc">Designed and fabricated safety components to meet SAE requirements. Aluminum backplate cut via water jet; tabs from 0.125" 4340 chromoly steel welded to chassis. Cal Poly Racing was first through technical inspection at 2025 Baja SAE.</div>
+        <div class="project-name">Composite Layups</div>
+        <div class="project-desc">Wet layup fabrication across multiple Baja SAE components including body panels, aero hoop, seat, and hood during the 2024-2025 season. Also contributed to the 2025-2026 hood using 2x2 twill carbon fiber over fiberglass tooling from the previous year.</div>
         <div class="project-tags">
-          <span class="project-tag-item">Water Jet</span>
-          <span class="project-tag-item">4340 Chromoly</span>
-          <span class="project-tag-item">Welding</span>
-          <span class="project-tag-item">SAE Safety</span>
+          <span class="project-tag-item">Wet Layup</span>
+          <span class="project-tag-item">2x2 Twill CF</span>
+          <span class="project-tag-item">FG Tooling</span>
+          <span class="project-tag-item">Baja SAE</span>
         </div>
         <div class="project-arrow">↗&#xFE0E;</div>
       </div>
 
+    </div>
+
+    <!-- MORE WORK -->
+    <div class="more-work reveal">
+      <div class="section-label" style="margin-bottom:1.5rem;">More Work</div>
+      <div class="more-grid">
+        <div class="more-item">
+          <span class="more-num">—</span>
+          <div>
+            <div class="more-name">Steering Wheel Inserts</div>
+            <div class="more-desc">Six aluminum inserts machined on manual lathe to within 0.005" — used in 2025 Baja SAE competition.</div>
+            <div class="more-tags">
+              <span class="project-tag-item">Manual Lathe</span>
+              <span class="project-tag-item">Aluminum</span>
+              <span class="project-tag-item">Baja SAE</span>
+            </div>
+          </div>
+        </div>
+        <div class="more-item">
+          <span class="more-num">—</span>
+          <div>
+            <div class="more-name">Fire Ext. Tabs & Headrest</div>
+            <div class="more-desc">Safety components water jet from 4340 chromoly and aluminum. Cal Poly Racing was first through tech inspection at 2025 Baja SAE.</div>
+            <div class="more-tags">
+              <span class="project-tag-item">Waterjet</span>
+              <span class="project-tag-item">4340 Chromoly</span>
+              <span class="project-tag-item">Welding</span>
+            </div>
+          </div>
+        </div>
+        <div class="more-item">
+          <span class="more-num">—</span>
+          <div>
+            <div class="more-name">Radio Holder</div>
+            <div class="more-desc">Fully designed and fabricated carbon fiber radio mount — CAD in Fusion 360, simple block mold, wet layup.</div>
+            <div class="more-tags">
+              <span class="project-tag-item">Fusion 360</span>
+              <span class="project-tag-item">Mold Design</span>
+              <span class="project-tag-item">Carbon Layup</span>
+            </div>
+          </div>
+        </div>
+        <div class="more-item">
+          <span class="more-num">—</span>
+          <div>
+            <div class="more-name">CF Clipboard</div>
+            <div class="more-desc">Carbon fiber clipboard fabricated in ME161 using pre-preg layup, autoclave cured.</div>
+            <div class="more-tags">
+              <span class="project-tag-item">Pre-preg</span>
+              <span class="project-tag-item">Autoclave</span>
+              <span class="project-tag-item">ME161</span>
+            </div>
+          </div>
+        </div>
+        <div class="more-item">
+          <span class="more-num">—</span>
+          <div>
+            <div class="more-name">CF Miata Radiator Cowl</div>
+            <div class="more-desc">Designing a lightweight carbon fiber cowl to direct airflow through the radiator of an NA Mazda Miata. CAD complete, manufacturing pending material acquisition.</div>
+            <div class="more-tags">
+              <span class="project-tag-item">Carbon Fiber</span>
+              <span class="project-tag-item">SolidWorks</span>
+              <span class="project-tag-item">In Progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
