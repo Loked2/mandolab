@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Composite Footplate — Armando Ramirez</title>
+  <meta name="description" content="Composite Footplate — project by Armando Ramirez, Mechanical Engineering, Cal Poly SLO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo"><span class="dot"></span> ARMANDO RAMIREZ</a>
+    <span class="nav-readout" data-clock>SLO 00:00:00</span>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </nav>
+
+  <main class="wrap detail">
+    <a class="crumb" href="../index.html#work"><span class="arrow">←</span> Back to all work</a>
+
+    <header class="detail-head">
+      <div>
+        <div class="detail-idx">PROJECT 01 / 11 · Baja SAE</div>
+        <h1 class="detail-title">Composite Footplate</h1>
+        <p class="detail-lead">A structural sandwich-panel <b>footplate for the Baja SAE car</b> — three plies of carbon fiber per face over a Nomex honeycomb core, sized with FEA and proven with physical bend testing.</p>
+      </div>
+      <div class="detail-spec corners">
+        <div class="row"><span class="k">Application</span><span class="v">Baja SAE driver footplate</span></div>
+        <div class="row"><span class="k">Faces</span><span class="v">3-ply carbon fiber</span></div>
+        <div class="row"><span class="k">Core</span><span class="v">Nomex honeycomb</span></div>
+        <div class="row"><span class="k">Analysis</span><span class="v">ANSYS ACP</span></div>
+        <div class="row"><span class="k">Validation</span><span class="v">3-point bend · 4 layups</span></div>
+        <div class="row"><span class="k">Season</span><span class="v">2024–2025</span></div>
+      </div>
+    </header>
+
+    <div class="detail-section-label">Overview</div>
+    <div class="detail-prose">
+        <p>The footplate carries the driver's foot loads while the car pounds through desert terrain, so it needed high stiffness-to-weight and reliable impact behavior. I modeled the panel as a composite sandwich in <b>ANSYS ACP</b>, applying representative foot loading to compare deflection and failure indices across core and face options.</p>
+        <p>To validate the simulation I fabricated four candidate sandwich configurations — carbon/Nomex, carbon/balsa, fiberglass/Nomex, and fiberglass/wood — and ran <b>three-point bend tests</b> on each. The carbon/Nomex layup gave the best stiffness-to-weight, matching the analytical ranking, and became the final design.</p>
+    </div>
+
+    <div class="detail-section-label">Highlights</div>
+    <div class="detail-prose">
+      <ul>
+        <li>Composite sandwich modeled in ANSYS ACP under driver foot loading</li>
+        <li>Four candidate layups fabricated and bend-tested head-to-head</li>
+        <li>Carbon/Nomex selected for best stiffness-to-weight</li>
+        <li>Installed on the competition vehicle for the 2025 season</li>
+      </ul>
+    </div>
+
+    <div class="detail-section-label">Gallery — 07 frames</div>
+    <div class="gallery" data-gallery>
+        <figure class="reveal wide"><img src="../images/footplate/final-footplate.jpg" alt="Final footplate" loading="lazy" /><figcaption>Final footplate</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/footplate-detail.jpg" alt="Footplate detail" loading="lazy" /><figcaption>Footplate detail</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/trimming-the-cured-panel.jpg" alt="Trimming the cured panel" loading="lazy" /><figcaption>Trimming the cured panel</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/carbon-nomex-honeycomb-sample.jpg" alt="Carbon / Nomex honeycomb sample" loading="lazy" /><figcaption>Carbon / Nomex honeycomb sample</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/carbon-balsa-core-sample.jpg" alt="Carbon / balsa core sample" loading="lazy" /><figcaption>Carbon / balsa core sample</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/fiberglass-nomex-sample.jpg" alt="Fiberglass / Nomex sample" loading="lazy" /><figcaption>Fiberglass / Nomex sample</figcaption></figure>
+        <figure class="reveal"><img src="../images/footplate/fiberglass-wood-core-sample.jpg" alt="Fiberglass / wood core sample" loading="lazy" /><figcaption>Fiberglass / wood core sample</figcaption></figure>
+    </div>
+
+    <nav class="detail-nav">
+      <a class="prev" href="lathe-lab.html"><span class="lbl">← Previous</span><span>Precision Lathe Work</span></a>
+      <a class="next" href="flying-wing.html"><span class="lbl">Next →</span><span>3D-Printed Flying Wing</span></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Armando Ramirez <span class="accent">·</span> mandolab.com</span>
+    <span>Mechanical Engineering <span class="accent">·</span> Cal Poly SLO</span>
+    <span><a href="../index.html#contact">Get in touch ↗</a></span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

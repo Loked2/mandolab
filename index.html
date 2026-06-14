@@ -2,858 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Armando Ramirez — mandolab.com</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #0a0a0a;
-      --white: #f5f0e8;
-      --green: #3ddc84;
-      --grey: #1a1a1a;
-      --mid: #3a3a3a;
-      --light-grey: #888;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--black);
-      background-image:
-        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 50%),
-        repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 50%);
-      background-size: 6px 6px;
-      color: var(--white);
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      font-weight: 400;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 100; opacity: 0.35;
-    }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 50;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 3rem;
-    }
-    nav::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
-      z-index: -1;
-    }
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2.5rem; }
-    .nav-links a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light-grey);
-      text-decoration: none;
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 1px;
-      background: var(--green);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 3rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    #hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(61,220,132,0.04) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%);
-      pointer-events: none; z-index: 0;
-    }
-    #hero > * { position: relative; z-index: 1; }
-
-    .hero-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.8s ease both;
-    }
-    .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 12vw, 14rem);
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      animation: fadeUp 0.8s 0.1s ease both;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; right: 3rem;
-      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
-      animation: fadeUp 1s 0.5s ease both;
-    }
-    .hero-scroll span {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--light-grey);
-      writing-mode: vertical-rl;
-    }
-    .scroll-line {
-      width: 1px; height: 60px;
-      background: linear-gradient(to bottom, var(--green), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity: 1; transform: scaleY(1); }
-      50% { opacity: 0.4; transform: scaleY(0.7); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    section { padding: 7rem 3rem; }
-
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .section-label::before {
-      content: '';
-      width: 30px; height: 1px;
-      background: var(--green);
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(4.5rem, 10vw, 10rem);
-      line-height: 1;
-    }
-
-    #about { background: rgba(10,10,10,0.97); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      max-width: 750px;
-      margin-top: 4rem;
-    }
-    .about-text p {
-      font-size: 1.2rem;
-      line-height: 1.9;
-      color: #bbb;
-      margin-bottom: 1.5rem;
-    }
-    .about-text p strong { color: var(--white); font-weight: 600; }
-    .about-text p em { color: var(--green); font-style: normal; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-    .stat-box {
-      background: var(--grey);
-      padding: 2rem 1.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .stat-box::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 3px; height: 0;
-      background: var(--green);
-      transition: height 0.4s ease;
-    }
-    .stat-box:hover { background: #1f1f1f; }
-    .stat-box:hover::before { height: 100%; }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--green);
-    }
-    .stat-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-grey);
-      margin-top: 0.5rem;
-    }
-
-    .skills-strip {
-      margin-top: 3rem;
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .skill-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid var(--mid);
-      color: var(--light-grey);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .skill-tag:hover {
-      border-color: var(--green);
-      color: var(--white);
-      background: rgba(61,220,132,0.08);
-    }
-
-    .coursework {
-      margin-top: 2.5rem;
-    }
-    .course-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1rem;
-    }
-    .course-item {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--mid);
-    }
-    .course-item:first-of-type { border-top: 1px solid var(--mid); }
-    .course-code {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--green);
-      flex-shrink: 0;
-      width: 50px;
-    }
-    .course-name {
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-    .course-name em { color: var(--light-grey); font-style: italic; font-size: 0.8rem; }
-
-    #projects { background: rgba(18,18,18,0.98); }
-    .projects-grid {
-      margin-top: 4rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-    .project-card {
-      background: var(--black);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .project-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--green);
-      transform: translateY(100%);
-      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-      z-index: 0;
-    }
-    .project-card:hover::after { transform: translateY(0); }
-    .project-card:hover .project-num,
-    .project-card:hover .project-name,
-    .project-card:hover .project-desc,
-    .project-card:hover .project-arrow { color: var(--black); }
-    .project-card:hover .project-tag-item { border-color: rgba(0,0,0,0.3); color: var(--black); }
-    .project-card > * { position: relative; z-index: 1; }
-
-    .project-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 4rem;
-      color: rgba(255,255,255,0.07);
-      line-height: 1;
-      transition: color 0.3s;
-    }
-    .project-card:hover .project-num { color: rgba(0,0,0,0.12); }
-    .project-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      margin-top: 0.5rem;
-      line-height: 1.1;
-      transition: color 0.3s;
-    }
-    .project-desc {
-      font-size: 1.1rem;
-      line-height: 1.75;
-      color: var(--light-grey);
-      margin-top: 1rem;
-      transition: color 0.3s;
-    }
-    .project-card:hover .project-desc { color: rgba(0,0,0,0.75); }
-    .project-tags {
-      margin-top: 1.5rem;
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-    }
-    .project-tag-item {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.6rem;
-      border: 1px solid var(--mid);
-      color: var(--light-grey);
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .project-arrow {
-      margin-top: 2rem;
-      font-size: 1.5rem;
-      color: var(--green);
-      transition: color 0.3s, transform 0.3s;
-      display: inline-block;
-    }
-    .project-card:hover .project-arrow {
-      color: var(--black);
-      transform: translate(4px, -4px);
-    }
-
-    #contact {
-      background: rgba(10,10,10,0.97);
-      text-align: center;
-    }
-    .contact-inner { max-width: 700px; margin: 0 auto; }
-    .contact-big {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(4rem, 10vw, 9rem);
-      line-height: 0.95;
-      margin: 2rem 0;
-    }
-    .contact-big .outline {
-      color: var(--white);
-    }
-    .contact-sub {
-      color: var(--light-grey);
-      font-size: 1.15rem;
-      line-height: 1.75;
-      margin-bottom: 3rem;
-    }
-    .contact-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      border: 1px solid;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-    .contact-btn.primary {
-      background: var(--green);
-      border-color: var(--green);
-      color: var(--black);
-    }
-    .contact-btn.primary:hover { background: transparent; color: var(--green); }
-    .contact-btn.secondary {
-      background: transparent;
-      border-color: var(--mid);
-      color: var(--light-grey);
-    }
-    .contact-btn.secondary:hover { border-color: var(--white); color: var(--white); }
-
-    .contact-form { text-align: left; margin-bottom: 2.5rem; }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .form-group {
-      display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem;
-    }
-    .form-group label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light-grey);
-    }
-    .form-group input,
-    .form-group textarea {
-      background: var(--grey);
-      border: 1px solid var(--mid);
-      color: var(--white);
-      font-family: 'Lora', serif;
-      font-size: 0.95rem;
-      padding: 0.85rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: #555; }
-    .form-group input:focus,
-    .form-group textarea:focus { border-color: var(--green); }
-    .form-bottom {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;
-    }
-    .contact-info {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--light-grey);
-      margin-top: 2rem;
-    }
-
-    .more-work {
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--mid);
-    }
-    .more-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .more-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .more-num {
-      color: var(--green);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-    .more-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-    .more-desc {
-      font-size: 0.85rem;
-      color: var(--light-grey);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-    .more-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-    }
-    @media (max-width: 900px) {
-      .more-grid { grid-template-columns: 1fr; }
-    }
-
-        .skill-category {
-      width: 100%;
-      margin-bottom: 1.25rem;
-    }
-    .skill-category-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 0.5rem;
-    }
-    .skill-tags-row {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-
-        .course-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      margin-top: 0.5rem;
-    }
-    .course-item {
-      display: flex;
-      align-items: baseline;
-      gap: 1.25rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--mid);
-    }
-    .course-item:first-child { border-top: 1px solid var(--mid); }
-    .course-code {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: var(--green);
-      flex-shrink: 0;
-      width: 50px;
-    }
-    .course-name {
-      font-family: 'Lora', serif;
-      font-size: 1.05rem;
-      color: #bbb;
-    }
-
-        footer {
-      border-top: 1px solid var(--grey);
-      padding: 2rem 3rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    footer p {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      color: var(--mid);
-    }
-    .footer-dot { color: var(--green); }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    @media (max-width: 900px) {
-      nav { padding: 1.25rem 1.5rem; }
-      section { padding: 5rem 1.5rem; }
-      #hero { padding: 0 1.5rem 4rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .more-work {
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--mid);
-    }
-    .more-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .more-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .more-num {
-      color: var(--green);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-    .more-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-    .more-desc {
-      font-size: 0.85rem;
-      color: var(--light-grey);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-    .more-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-    }
-    @media (max-width: 900px) {
-      .more-grid { grid-template-columns: 1fr; }
-    }
-
-        .skill-category {
-      width: 100%;
-      margin-bottom: 1.25rem;
-    }
-    .skill-category-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 0.5rem;
-    }
-    .skill-tags-row {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-
-        .course-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      margin-top: 0.5rem;
-    }
-    .course-item {
-      display: flex;
-      align-items: baseline;
-      gap: 1.25rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--mid);
-    }
-    .course-item:first-child { border-top: 1px solid var(--mid); }
-    .course-code {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: var(--green);
-      flex-shrink: 0;
-      width: 50px;
-    }
-    .course-name {
-      font-family: 'Lora', serif;
-      font-size: 1.05rem;
-      color: #bbb;
-    }
-
-        footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .form-row { grid-template-columns: 1fr; }
-      .form-bottom { flex-direction: column; align-items: stretch; }
-    }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armando Ramirez — Mechanical Engineer · mandolab.com</title>
+  <meta name="description" content="Armando Ramirez — Mechanical Engineering student at Cal Poly SLO specializing in composite structures and manufacturing. Baja SAE composites, a 3D-printed flying wing capstone, and ASTM materials testing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <nav>
-    <a href="#hero" class="nav-logo">AR</a>
+  <nav class="nav">
+    <a href="#top" class="nav-logo"><span class="dot"></span> ARMANDO RAMIREZ</a>
+    <span class="nav-readout" data-clock>SLO 00:00:00</span>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
+      <a href="#work">Work</a>
       <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </nav>
 
-  <section id="hero">
-    <div class="hero-tag">Mechanical Engineering · Cal Poly SLO · 2026</div>
-    <h1 class="hero-name">
-      ARMANDO<br>
-      RAMIREZ
-    </h1>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="section-label">About Me</div>
-    <h2 class="section-title reveal">ABOUT<br>ME</h2>
-    <div class="about-grid">
-      <div class="about-text reveal reveal-delay-1">
-        <p>I'm a <strong>Mechanical Engineering student at Cal Poly SLO</strong>, graduating December 2026 and specializing in <em>composite structures and manufacturing</em>. I work at the intersection of hands-on fabrication and structural analysis.</p>
-        <p>During the <strong>2024–2025 season</strong> with <em>Cal Poly Racing's Baja SAE team</em>, I manufactured composite components including a Carbon-Kevlar skid plate, steering wheel inserts, and safety hardware — helping the team achieve 6th overall at Baja SAE Arizona 2025 and pass technical inspection first with no safety concerns.</p>
-        <p>My senior capstone is a <em>3D-printed competition flying wing aircraft</em> designed for high glide ratio. I'm also actively pursuing internship opportunities in <em>aerospace, automotive, and advanced manufacturing</em>.</p>
-        <div class="skills-strip">
-          <span class="skill-tag">ANSYS ACP</span>
-          <span class="skill-tag">ANSYS Static Structural</span>
-          <span class="skill-tag">XFLR5</span>
-          <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">SolidWorks</span>
-          <span class="skill-tag">Fusion 360</span>
-          <span class="skill-tag">CLT / ABD Matrix</span>
-          <span class="skill-tag">Vacuum Infusion</span>
-          <span class="skill-tag">Wet Layup</span>
-          <span class="skill-tag">Pre-preg Layup</span>
-          <span class="skill-tag">3D Printing</span>
-          <span class="skill-tag">ASTM Testing</span>
-        </div>
-        <div class="coursework">
-          <div class="course-label">Relevant Coursework</div>
-          <div class="course-item">
-            <span class="course-code">ME412</span>
-            <span class="course-name">Composite Materials Analysis &amp; Design</span>
-          </div>
-          <div class="course-item">
-            <span class="course-code">ME161</span>
-            <span class="course-name">Composite Materials Manufacturing</span>
-          </div>
-          <div class="course-item">
-            <span class="course-code">ME470</span>
-            <span class="course-name">Fracture Mechanics &amp; Fatigue <em>(Selected Topics)</em></span>
-          </div>
-        </div>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-meta">
+        <span>Portfolio <span class="accent">/ Rev 2026</span></span>
+        <span>Mechanical Engineering</span>
+        <span>Cal Poly · San Luis Obispo</span>
       </div>
+      <h1 class="hero-name">
+        <span class="ln"><span>ARMANDO</span></span>
+        <span class="ln"><span><em>RAMIREZ</em></span></span>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-statement">
+          I design, build, and validate <b>composite structures</b> — from carbon-Kevlar
+          skid plates and honeycomb sandwich panels to a 3D-printed flying wing — where
+          hands-on fabrication meets structural analysis.
+        </p>
+        <div class="hero-spec corners">
+          <div class="row"><span class="k">Role</span><span class="v">Mechanical Engineer</span></div>
+          <div class="row"><span class="k">Focus</span><span class="v">Composites · Structures</span></div>
+          <div class="row"><span class="k">Team</span><span class="v">Cal Poly Racing — Baja SAE</span></div>
+          <div class="row"><span class="k">Grad</span><span class="v">December 2026</span></div>
+          <div class="row"><span class="k">Status</span><span class="v">Open to internships</span></div>
+        </div>
       </div>
     </div>
-    </div>
-  </section>
+    <div class="hero-scroll"><span class="bar"></span> Scroll</div>
+  </header>
 
-  <section id="projects">
-    <div class="section-label">Projects</div>
-    <h2 class="section-title reveal">PROJECTS</h2>
-    <div class="projects-grid">
-
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-num">01</div>
-        <div class="project-name">Composite Footplate</div>
-        <div class="project-desc">Designed and tested a composite sandwich panel footplate for the Baja SAE vehicle. Three plies of carbon fiber on each face with a Nomex honeycomb core. Ran ANSYS ACP to simulate driver foot loading, and conducted 3-point bend testing on four candidate material configurations before selecting CF/Nomex.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">ANSYS ACP</span>
-          <span class="project-tag-item">Nomex Honeycomb</span>
-          <span class="project-tag-item">3-Point Bend</span>
-          <span class="project-tag-item">Baja SAE</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">01</span>
+        <h2 class="section-title">About</h2>
+        <span class="section-note">Profile / Bio</span>
       </div>
 
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-num">02</div>
-        <div class="project-name">3D-Printed Flying Wing</div>
-        <div class="project-desc">Senior capstone RC flying wing aircraft optimized for high glide ratio. Used XFLR5 to compare five airfoils (MH60, MH45, SD7037, Clark Y, E325), ran ASTM D638 tensile testing to characterize PLA, and applied experimental values in ANSYS Static Structural FEA on the wing spars.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">XFLR5</span>
-          <span class="project-tag-item">ANSYS Static Structural</span>
-          <span class="project-tag-item">ASTM D638</span>
-          <span class="project-tag-item">FDM</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-num">03</div>
-        <div class="project-name">Composite Skid Plate</div>
-        <div class="project-desc">Fabricated an impact-resistant three-piece skid plate for off-road racing via vacuum infusion. Carbon-Kevlar with Rohacell core — 43% lighter than aluminum equivalent. Achieved 6th overall at Baja SAE Arizona 2025 with no structural damage.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">Vacuum Infusion</span>
-          <span class="project-tag-item">Carbon-Kevlar</span>
-          <span class="project-tag-item">Rohacell Core</span>
-          <span class="project-tag-item">Baja SAE</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-num">04</div>
-        <div class="project-name">SAMPE Composite I-Beam</div>
-        <div class="project-desc">ME161 project — manufactured the lightest composite I-beam to achieve maximum point load in three-point bending. Unidirectional pre-preg carbon fiber layup with Nomex sandwich core. Achieved 9kN load at just 312g.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">Pre-preg UD Carbon</span>
-          <span class="project-tag-item">Nomex Core</span>
-          <span class="project-tag-item">ME161</span>
-          <span class="project-tag-item">SAMPE</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-num">05</div>
-        <div class="project-name">ASTM D3039/D3518 Testing</div>
-        <div class="project-desc">Fabricated and tested unidirectional composite samples using Toray TC250 infused pre-preg to determine mean strength properties per ASTM standards. Tested in Instron — experimental results matched analytical micromechanics predictions within 2% error.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">ASTM D3039</span>
-          <span class="project-tag-item">ASTM D3518</span>
-          <span class="project-tag-item">Toray TC250</span>
-          <span class="project-tag-item">Instron</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-num">06</div>
-        <div class="project-name">Composite Layups</div>
-        <div class="project-desc">Wet layup fabrication across multiple Baja SAE components including body panels, aero hoop, seat, and hood during the 2024-2025 season. Also contributed to the 2025-2026 hood using 2x2 twill carbon fiber over fiberglass tooling from the previous year.</div>
-        <div class="project-tags">
-          <span class="project-tag-item">Wet Layup</span>
-          <span class="project-tag-item">2x2 Twill CF</span>
-          <span class="project-tag-item">FG Tooling</span>
-          <span class="project-tag-item">Baja SAE</span>
-        </div>
-        <div class="project-arrow">↗&#xFE0E;</div>
-      </div>
-
-    </div>
-
-    <!-- MORE WORK -->
-    <div class="more-work reveal">
-      <div class="section-label" style="margin-bottom:1.5rem;">More Work</div>
-      <div class="more-grid">
-        <div class="more-item">
-          <span class="more-num">—</span>
-          <div>
-            <div class="more-name">Steering Wheel Inserts</div>
-            <div class="more-desc">Six aluminum inserts machined on manual lathe to within 0.005" — used in 2025 Baja SAE competition.</div>
-            <div class="more-tags">
-              <span class="project-tag-item">Manual Lathe</span>
-              <span class="project-tag-item">Aluminum</span>
-              <span class="project-tag-item">Baja SAE</span>
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="portrait corners">
+            <!-- Drop a headshot at images/portrait.jpg to replace this placeholder -->
+            <img src="images/portrait.jpg" alt="Armando Ramirez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+              <span>Portrait<br>images/portrait.jpg</span>
             </div>
           </div>
+          <div class="portrait-cap"><span>FIG. 01</span><span>Armando R.</span></div>
         </div>
-        <div class="more-item">
-          <span class="more-num">—</span>
-          <div>
-            <div class="more-name">Fire Ext. Tabs & Headrest</div>
-            <div class="more-desc">Safety components water jet from 4340 chromoly and aluminum. Cal Poly Racing was first through tech inspection at 2025 Baja SAE.</div>
-            <div class="more-tags">
-              <span class="project-tag-item">Waterjet</span>
-              <span class="project-tag-item">4340 Chromoly</span>
-              <span class="project-tag-item">Welding</span>
-            </div>
+
+        <div>
+          <div class="about-body reveal d1">
+            <p>I'm a <b>Mechanical Engineering student at Cal Poly, San Luis Obispo</b>, graduating December 2026 and specializing in <em>composite structures and manufacturing</em>. I work at the intersection of hands-on fabrication and structural analysis.</p>
+            <p>During the <b>2024–2025 season</b> with <em>Cal Poly Racing's Baja SAE team</em>, I manufactured composite components including a Carbon-Kevlar skid plate, steering wheel inserts, and safety hardware — helping the team finish <b>6th overall at Baja SAE Arizona 2025</b> and pass technical inspection first with no safety concerns.</p>
+            <p>My senior capstone is a <em>3D-printed competition flying wing</em> designed for high glide ratio. I'm actively pursuing internships in <em>aerospace, automotive, and advanced manufacturing</em>.</p>
           </div>
-        </div>
-        <div class="more-item">
-          <span class="more-num">—</span>
-          <div>
-            <div class="more-name">Radio Holder</div>
-            <div class="more-desc">Fully designed and fabricated carbon fiber radio mount — CAD in Fusion 360, simple block mold, wet layup.</div>
-            <div class="more-tags">
-              <span class="project-tag-item">Fusion 360</span>
-              <span class="project-tag-item">Mold Design</span>
-              <span class="project-tag-item">Carbon Layup</span>
-            </div>
+
+          <div class="specsheet reveal d1">
+            <div class="row"><span class="k">Discipline</span><span class="v">Mechanical Engineering</span></div>
+            <div class="row"><span class="k">Institution</span><span class="v">Cal Poly, San Luis Obispo</span></div>
+            <div class="row"><span class="k">Graduation</span><span class="v">December 2026</span></div>
+            <div class="row"><span class="k">Focus</span><span class="v">Composite Structures &amp; Manufacturing</span></div>
+            <div class="row"><span class="k">Team</span><span class="v">Cal Poly Racing — Baja SAE</span></div>
+            <div class="row"><span class="k">Coursework</span><span class="v">ME412 · ME161 · ME470</span></div>
+            <div class="row"><span class="k">Status</span><span class="v">Seeking 2026 internships</span></div>
           </div>
-        </div>
-        <div class="more-item">
-          <span class="more-num">—</span>
-          <div>
-            <div class="more-name">CF Clipboard</div>
-            <div class="more-desc">Carbon fiber clipboard fabricated in ME161 using pre-preg layup, autoclave cured.</div>
-            <div class="more-tags">
-              <span class="project-tag-item">Pre-preg</span>
-              <span class="project-tag-item">Autoclave</span>
-              <span class="project-tag-item">ME161</span>
+
+          <div class="skills reveal d2">
+            <div class="skill-group">
+              <div class="gl">Analysis &amp; Simulation</div>
+              <div class="chips">
+                <span class="chip">ANSYS ACP</span>
+                <span class="chip">ANSYS Static Structural</span>
+                <span class="chip">XFLR5</span>
+                <span class="chip">MATLAB</span>
+                <span class="chip">CLT / ABD Matrix</span>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="more-item">
-          <span class="more-num">—</span>
-          <div>
-            <div class="more-name">CF Miata Radiator Cowl</div>
-            <div class="more-desc">Designing a lightweight carbon fiber cowl to direct airflow through the radiator of an NA Mazda Miata. CAD complete, manufacturing pending material acquisition.</div>
-            <div class="more-tags">
-              <span class="project-tag-item">Carbon Fiber</span>
-              <span class="project-tag-item">SolidWorks</span>
-              <span class="project-tag-item">In Progress</span>
+            <div class="skill-group">
+              <div class="gl">CAD</div>
+              <div class="chips">
+                <span class="chip">SolidWorks</span>
+                <span class="chip">Fusion 360</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="gl">Manufacturing</div>
+              <div class="chips">
+                <span class="chip">Vacuum Infusion</span>
+                <span class="chip">Wet Layup</span>
+                <span class="chip">Pre-preg / Autoclave</span>
+                <span class="chip">3D Printing (FDM)</span>
+                <span class="chip">Manual Lathe</span>
+                <span class="chip">Waterjet</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="gl">Testing</div>
+              <div class="chips">
+                <span class="chip">ASTM D3039 / D3518</span>
+                <span class="chip">ASTM D638</span>
+                <span class="chip">Instron</span>
+                <span class="chip">3-Point Bend</span>
+              </div>
             </div>
           </div>
         </div>
@@ -861,53 +137,248 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="contact-inner">
-      <div class="section-label" style="justify-content:center;">Get In Touch</div>
-      <div class="contact-big reveal">
-        CONTACT<br><span class="outline">ME</span>
+  <!-- ===================== FEATURE BAND ===================== -->
+  <section class="band reveal">
+    <img src="images/baja-team/car-after-arizona-competition.jpg" alt="Cal Poly Racing Baja SAE car after the Arizona competition" loading="lazy" />
+    <div class="band-inner">
+      <div class="band-label">Cal Poly Racing · Baja SAE</div>
+      <div class="band-title">Composites that survive the desert.</div>
+      <div class="band-sub">
+        <span><span class="accent">▸</span> 6th overall — Baja SAE Arizona 2025</span>
+        <span><span class="accent">▸</span> First through technical inspection</span>
+        <span><span class="accent">▸</span> 2024–2026 seasons</span>
       </div>
-      <p class="contact-sub reveal reveal-delay-1">
-        I'm actively seeking internships in aerospace, automotive, and advanced manufacturing — especially in composites and structural engineering.
-      </p>
-      <form class="contact-form" action="https://formspree.io/f/xojkdrbg" method="POST">
-        <div class="form-row">
+    </div>
+  </section>
+
+  <!-- ===================== WORK ===================== -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">02</span>
+        <h2 class="section-title">Selected Work</h2>
+        <span class="section-note">06 Projects</span>
+      </div>
+
+      <div class="proj-grid">
+
+        <article class="plate reveal">
+          <a class="plate-link" href="projects/footplate.html" aria-label="Composite Footplate"></a>
+          <div class="plate-img">
+            <span class="plate-num">01</span><span class="plate-tagcat">Baja SAE</span>
+            <img src="images/footplate/final-footplate.jpg" alt="Composite footplate" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">Composite Footplate</h3>
+            <p class="plate-desc">Sandwich-panel footplate — carbon faces over Nomex honeycomb, validated by FEA and 3-point bend testing of four candidate layups.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Material</span><span class="v">CF / Nomex</span></div>
+              <div class="row"><span class="k">Method</span><span class="v">ANSYS ACP · ASTM bend</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+        <article class="plate reveal d1">
+          <a class="plate-link" href="projects/flying-wing.html" aria-label="3D-Printed Flying Wing"></a>
+          <div class="plate-img">
+            <span class="plate-num">02</span><span class="plate-tagcat">Capstone</span>
+            <img src="images/flying-wing/assembled-final-aircraft.jpg" alt="3D-printed flying wing aircraft" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">3D-Printed Flying Wing</h3>
+            <p class="plate-desc">Senior capstone RC flying wing optimized for glide ratio — airfoil study, PLA tensile characterization, and spar FEA.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Tools</span><span class="v">XFLR5 · ANSYS</span></div>
+              <div class="row"><span class="k">Test</span><span class="v">ASTM D638</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+        <article class="plate reveal d2">
+          <a class="plate-link" href="projects/skid-plate.html" aria-label="Composite Skid Plate"></a>
+          <div class="plate-img">
+            <span class="plate-num">03</span><span class="plate-tagcat">Baja SAE</span>
+            <img src="images/skid-plate/first-skid-plate-infusion.jpg" alt="Composite skid plate vacuum infusion" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">Composite Skid Plate</h3>
+            <p class="plate-desc">Three-piece impact skid plate via vacuum infusion — Carbon-Kevlar over Rohacell core, 43% lighter than the aluminum equivalent.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Process</span><span class="v">Vacuum Infusion</span></div>
+              <div class="row"><span class="k">Result</span><span class="v">6th @ AZ 2025</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+        <article class="plate reveal">
+          <a class="plate-link" href="projects/sampe-ibeam.html" aria-label="SAMPE Composite I-Beam"></a>
+          <div class="plate-img">
+            <span class="plate-num">04</span><span class="plate-tagcat">ME161</span>
+            <img src="images/sampe-ibeam/manufactured-i-beam.jpg" alt="SAMPE composite I-beam" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">SAMPE Composite I-Beam</h3>
+            <p class="plate-desc">Lightest composite I-beam to hit maximum point load in 3-point bending — unidirectional pre-preg with a Nomex sandwich core.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Load</span><span class="v">9 kN</span></div>
+              <div class="row"><span class="k">Mass</span><span class="v">312 g</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+        <article class="plate reveal d1">
+          <a class="plate-link" href="projects/astm-testing.html" aria-label="ASTM D3039 / D3518 Testing"></a>
+          <div class="plate-img">
+            <span class="plate-num">05</span><span class="plate-tagcat">Materials</span>
+            <img src="images/astm-testing/d3039-unidirectional-plies.jpg" alt="ASTM composite test coupons" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">ASTM D3039 / D3518 Testing</h3>
+            <p class="plate-desc">Fabricated and tested unidirectional composite coupons to ASTM standards — experimental results matched micromechanics within 2%.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Standards</span><span class="v">D3039 · D3518</span></div>
+              <div class="row"><span class="k">Error</span><span class="v">&lt; 2%</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+        <article class="plate reveal d2">
+          <a class="plate-link" href="projects/composite-layups.html" aria-label="Composite Layups"></a>
+          <div class="plate-img">
+            <span class="plate-num">06</span><span class="plate-tagcat">Baja SAE</span>
+            <img src="images/composite-layups/2025-hood-on-the-car.jpg" alt="Baja SAE carbon fiber hood" loading="lazy" />
+          </div>
+          <div class="plate-body">
+            <h3 class="plate-name">Composite Layups</h3>
+            <p class="plate-desc">Wet-layup fabrication across Baja body panels, hood, aero hoop, seat, and drivetrain guards through two seasons.</p>
+            <div class="plate-data">
+              <div class="row"><span class="k">Method</span><span class="v">Wet Layup</span></div>
+              <div class="row"><span class="k">Fabric</span><span class="v">2×2 Twill CF</span></div>
+            </div>
+          </div>
+          <div class="plate-foot"><span>View Project</span><span class="arrow">↗</span></div>
+        </article>
+
+      </div>
+
+      <!-- MORE WORK -->
+      <div class="more reveal">
+        <div class="more-head">More Work / Fabrication Log</div>
+        <div class="more-grid">
+
+          <div class="more-item">
+            <a class="more-link" href="projects/steering-inserts.html" aria-label="Steering Wheel Inserts"></a>
+            <div class="more-thumb"><img src="images/steering-inserts/final-machined-inserts.jpg" alt="Steering wheel inserts" loading="lazy" /></div>
+            <div class="more-text">
+              <div class="more-name">Steering Wheel Inserts</div>
+              <div class="more-desc">Six aluminum inserts turned on a manual lathe to ±0.005″ for the 2025 Baja car.</div>
+            </div>
+          </div>
+
+          <div class="more-item">
+            <a class="more-link" href="projects/headrest-safety.html" aria-label="Fire Extinguisher Tabs & Headrest"></a>
+            <div class="more-thumb"><img src="images/headrest-safety/headrest.jpg" alt="Headrest and safety hardware" loading="lazy" /></div>
+            <div class="more-text">
+              <div class="more-name">Fire Ext. Tabs &amp; Headrest</div>
+              <div class="more-desc">Safety hardware waterjet from 4340 chromoly &amp; aluminum — first through tech inspection.</div>
+            </div>
+          </div>
+
+          <div class="more-item">
+            <a class="more-link" href="projects/radio-holder.html" aria-label="Radio Holder"></a>
+            <div class="more-thumb"><img src="images/radio-holder/finished-radio-holder.jpg" alt="Carbon fiber radio holder" loading="lazy" /></div>
+            <div class="more-text">
+              <div class="more-name">Radio Holder</div>
+              <div class="more-desc">Carbon fiber radio mount — Fusion 360 CAD, 3D-printed mold, wet layup.</div>
+            </div>
+          </div>
+
+          <div class="more-item">
+            <a class="more-link" href="projects/cf-clipboard.html" aria-label="Carbon Fiber Clipboard"></a>
+            <div class="more-thumb"><img src="images/cf-clipboard/carbon-fiber-clipboard.jpg" alt="Carbon fiber clipboard" loading="lazy" /></div>
+            <div class="more-text">
+              <div class="more-name">Carbon Fiber Clipboard</div>
+              <div class="more-desc">Pre-preg carbon clipboard, autoclave cured — ME161.</div>
+            </div>
+          </div>
+
+          <div class="more-item">
+            <a class="more-link" href="projects/lathe-lab.html" aria-label="Precision Lathe Work"></a>
+            <div class="more-thumb"><img src="images/lathe-lab/finished-lathe-part.jpg" alt="Precision lathe work" loading="lazy" /></div>
+            <div class="more-text">
+              <div class="more-name">Precision Lathe Work</div>
+              <div class="more-desc">Manual-lathe part held to drawing tolerances, caliper-verified — IME lab.</div>
+            </div>
+          </div>
+
+          <div class="more-item">
+            <div class="more-thumb" style="display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,0.05) 8px,rgba(0,0,0,0.05) 9px);"></div>
+            <div class="more-text">
+              <div class="more-name">CF Miata Radiator Cowl</div>
+              <div class="more-desc">Lightweight carbon cowl to duct airflow through an NA Miata radiator — <em>in progress</em>.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-idx">03</span>
+        <h2 class="section-title">Contact</h2>
+        <span class="section-note">Get In Touch</span>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-lead">Let's build something.</div>
+          <p class="contact-sub">I'm actively seeking internships in aerospace, automotive, and advanced manufacturing — especially in composites and structural engineering.</p>
+          <div class="contact-direct">
+            <a href="mailto:armaandoramiirez@gmail.com"><span class="k">Email</span><span>armaandoramiirez@gmail.com</span></a>
+            <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span>in/mandoramirez ↗</span></a>
+            <div class="row"><span class="k">Location</span><span>San Luis Obispo, CA</span></div>
+          </div>
+        </div>
+
+        <form class="reveal d1" action="https://formspree.io/f/xojkdrbg" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell me about the role or project…" required></textarea>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          <div class="contact-actions">
+            <button type="submit" class="btn">Send Message →</button>
+            <a href="mailto:armaandoramiirez@gmail.com" class="btn ghost">Email Directly</a>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Send me a message..." required></textarea>
-        </div>
-        <div class="form-bottom">
-          <button type="submit" class="contact-btn primary">Send Message ↗</button>
-          <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" class="contact-btn secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Armando Ramirez <span class="footer-dot">·</span> mandolab.com</p>
-    <p>Cal Poly SLO <span class="footer-dot">·</span> Dec 2026</p>
+  <footer class="footer">
+    <span>© 2026 Armando Ramirez <span class="accent">·</span> mandolab.com</span>
+    <span>Mechanical Engineering <span class="accent">·</span> Cal Poly SLO</span>
+    <span>Built with precision <span class="accent">·</span> Rev 2026</span>
   </footer>
 
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>

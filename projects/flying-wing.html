@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D-Printed Flying Wing — Armando Ramirez</title>
+  <meta name="description" content="3D-Printed Flying Wing — project by Armando Ramirez, Mechanical Engineering, Cal Poly SLO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo"><span class="dot"></span> ARMANDO RAMIREZ</a>
+    <span class="nav-readout" data-clock>SLO 00:00:00</span>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/mandoramirez/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </nav>
+
+  <main class="wrap detail">
+    <a class="crumb" href="../index.html#work"><span class="arrow">←</span> Back to all work</a>
+
+    <header class="detail-head">
+      <div>
+        <div class="detail-idx">PROJECT 02 / 11 · Senior Capstone</div>
+        <h1 class="detail-title">3D-Printed Flying Wing</h1>
+        <p class="detail-lead">My <b>senior capstone</b> — a 3D-printed RC flying wing optimized for high glide ratio, carried from an airfoil study through material testing and into structural FEA.</p>
+      </div>
+      <div class="detail-spec corners">
+        <div class="row"><span class="k">Type</span><span class="v">RC flying wing (capstone)</span></div>
+        <div class="row"><span class="k">Objective</span><span class="v">Maximize glide ratio</span></div>
+        <div class="row"><span class="k">Aero</span><span class="v">XFLR5 · 5 airfoils</span></div>
+        <div class="row"><span class="k">Material</span><span class="v">3D-printed PLA (FDM)</span></div>
+        <div class="row"><span class="k">Mat. test</span><span class="v">ASTM D638 tensile</span></div>
+        <div class="row"><span class="k">Structure</span><span class="v">ANSYS Static Structural</span></div>
+      </div>
+    </header>
+
+    <div class="detail-section-label">Overview</div>
+    <div class="detail-prose">
+        <p>The goal was a printable flying wing that glides efficiently. I used <b>XFLR5</b> to compare five airfoils — MH60, MH45, SD7037, Clark Y, and E325 — evaluating lift-to-drag and pitching behavior to choose a section that balances glide performance with the stability a tailless wing demands.</p>
+        <p>Because the airframe is <b>3D printed in PLA</b>, handbook material values don't apply. I ran <b>ASTM D638</b> tensile tests on printed coupons to measure real modulus and strength, then fed those into <b>ANSYS Static Structural</b> FEA on the wing spars to confirm they survive flight and wing-loading conditions.</p>
+        <p>I validated the structure physically with a <b>sandbag wing-loading test</b> and a vibration test setup, and printed the wing in segments of varying density to manage mass distribution along the span.</p>
+    </div>
+
+    <div class="detail-section-label">Highlights</div>
+    <div class="detail-prose">
+      <ul>
+        <li>Five-airfoil trade study in XFLR5</li>
+        <li>PLA characterized experimentally via ASTM D638</li>
+        <li>Spar FEA in ANSYS using measured material properties</li>
+        <li>Sandbag wing-loading and vibration validation</li>
+        <li>1st place recognition</li>
+      </ul>
+    </div>
+
+    <div class="detail-section-label">Gallery — 10 frames</div>
+    <div class="gallery" data-gallery>
+        <figure class="reveal wide"><img src="../images/flying-wing/assembled-final-aircraft.jpg" alt="Assembled final aircraft" loading="lazy" /><figcaption>Assembled final aircraft</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/first-flight.jpg" alt="First flight" loading="lazy" /><figcaption>First flight</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/fuselage-in-the-slicer.jpg" alt="Fuselage in the slicer" loading="lazy" /><figcaption>Fuselage in the slicer</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/fuselage-scale.jpg" alt="Fuselage scale" loading="lazy" /><figcaption>Fuselage scale</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/lightest-wing-segment.jpg" alt="Lightest wing segment" loading="lazy" /><figcaption>Lightest wing segment</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/second-lightest-wing-segment.jpg" alt="Second-lightest wing segment" loading="lazy" /><figcaption>Second-lightest wing segment</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/heaviest-wing-segment.jpg" alt="Heaviest wing segment" loading="lazy" /><figcaption>Heaviest wing segment</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/wing-loading-test.jpg" alt="Wing loading test" loading="lazy" /><figcaption>Wing loading test</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/vibration-test-setup.jpg" alt="Vibration test setup" loading="lazy" /><figcaption>Vibration test setup</figcaption></figure>
+        <figure class="reveal"><img src="../images/flying-wing/1st-place-plaque.jpg" alt="1st place plaque" loading="lazy" /><figcaption>1st place plaque</figcaption></figure>
+    </div>
+
+    <nav class="detail-nav">
+      <a class="prev" href="footplate.html"><span class="lbl">← Previous</span><span>Composite Footplate</span></a>
+      <a class="next" href="skid-plate.html"><span class="lbl">Next →</span><span>Composite Skid Plate</span></a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Armando Ramirez <span class="accent">·</span> mandolab.com</span>
+    <span>Mechanical Engineering <span class="accent">·</span> Cal Poly SLO</span>
+    <span><a href="../index.html#contact">Get in touch ↗</a></span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

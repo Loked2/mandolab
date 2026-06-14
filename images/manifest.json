@@ -1,0 +1,362 @@
+{
+  "footplate": {
+    "title": "Composite Footplate",
+    "cover": "images/footplate/final-footplate.jpg",
+    "images": [
+      {
+        "src": "images/footplate/final-footplate.jpg",
+        "caption": "Final footplate"
+      },
+      {
+        "src": "images/footplate/footplate-detail.jpg",
+        "caption": "Footplate detail"
+      },
+      {
+        "src": "images/footplate/trimming-the-cured-panel.jpg",
+        "caption": "Trimming the cured panel"
+      },
+      {
+        "src": "images/footplate/carbon-nomex-honeycomb-sample.jpg",
+        "caption": "Carbon / Nomex honeycomb sample"
+      },
+      {
+        "src": "images/footplate/carbon-balsa-core-sample.jpg",
+        "caption": "Carbon / balsa core sample"
+      },
+      {
+        "src": "images/footplate/fiberglass-nomex-sample.jpg",
+        "caption": "Fiberglass / Nomex sample"
+      },
+      {
+        "src": "images/footplate/fiberglass-wood-core-sample.jpg",
+        "caption": "Fiberglass / wood core sample"
+      }
+    ]
+  },
+  "flying-wing": {
+    "title": "3D-Printed Flying Wing",
+    "cover": "images/flying-wing/assembled-final-aircraft.jpg",
+    "images": [
+      {
+        "src": "images/flying-wing/assembled-final-aircraft.jpg",
+        "caption": "Assembled final aircraft"
+      },
+      {
+        "src": "images/flying-wing/first-flight.jpg",
+        "caption": "First flight"
+      },
+      {
+        "src": "images/flying-wing/fuselage-in-the-slicer.jpg",
+        "caption": "Fuselage in the slicer"
+      },
+      {
+        "src": "images/flying-wing/fuselage-scale.jpg",
+        "caption": "Fuselage scale"
+      },
+      {
+        "src": "images/flying-wing/lightest-wing-segment.jpg",
+        "caption": "Lightest wing segment"
+      },
+      {
+        "src": "images/flying-wing/second-lightest-wing-segment.jpg",
+        "caption": "Second-lightest wing segment"
+      },
+      {
+        "src": "images/flying-wing/heaviest-wing-segment.jpg",
+        "caption": "Heaviest wing segment"
+      },
+      {
+        "src": "images/flying-wing/wing-loading-test.jpg",
+        "caption": "Wing loading test"
+      },
+      {
+        "src": "images/flying-wing/vibration-test-setup.jpg",
+        "caption": "Vibration test setup"
+      },
+      {
+        "src": "images/flying-wing/1st-place-plaque.jpg",
+        "caption": "1st place plaque"
+      }
+    ]
+  },
+  "skid-plate": {
+    "title": "Composite Skid Plate",
+    "cover": "images/skid-plate/first-skid-plate-infusion.jpg",
+    "images": [
+      {
+        "src": "images/skid-plate/first-skid-plate-infusion.jpg",
+        "caption": "First skid plate infusion"
+      },
+      {
+        "src": "images/skid-plate/vacuum-infusion-in-progress.jpg",
+        "caption": "Vacuum infusion in progress"
+      },
+      {
+        "src": "images/skid-plate/infusion-detail.jpg",
+        "caption": "Infusion detail"
+      },
+      {
+        "src": "images/skid-plate/carbon-kevlar-rohacell-materials.jpg",
+        "caption": "Carbon-Kevlar + Rohacell materials"
+      },
+      {
+        "src": "images/skid-plate/finished-skid-plate-body-panels.jpg",
+        "caption": "Finished skid plate & body panels"
+      }
+    ]
+  },
+  "sampe-ibeam": {
+    "title": "SAMPE Composite I-Beam",
+    "cover": "images/sampe-ibeam/manufactured-i-beam.jpg",
+    "images": [
+      {
+        "src": "images/sampe-ibeam/manufactured-i-beam.jpg",
+        "caption": "Manufactured I-beam"
+      },
+      {
+        "src": "images/sampe-ibeam/cross-section.jpg",
+        "caption": "Cross section"
+      },
+      {
+        "src": "images/sampe-ibeam/pre-preg-layup.jpg",
+        "caption": "Pre-preg layup"
+      },
+      {
+        "src": "images/sampe-ibeam/nomex-sandwich-core.jpg",
+        "caption": "Nomex sandwich core"
+      },
+      {
+        "src": "images/sampe-ibeam/before-trimming.jpg",
+        "caption": "Before trimming"
+      },
+      {
+        "src": "images/sampe-ibeam/unidirectional-plies.jpg",
+        "caption": "Unidirectional plies"
+      },
+      {
+        "src": "images/sampe-ibeam/standing-on-the-beam-post-test.jpg",
+        "caption": "Standing on the beam, post-test"
+      }
+    ]
+  },
+  "astm-testing": {
+    "title": "ASTM D3039 / D3518 Testing",
+    "cover": "images/astm-testing/d3039-unidirectional-plies.jpg",
+    "images": [
+      {
+        "src": "images/astm-testing/d3039-unidirectional-plies.jpg",
+        "caption": "D3039 unidirectional plies"
+      },
+      {
+        "src": "images/astm-testing/d3039-post-fracture.jpg",
+        "caption": "D3039 post-fracture"
+      },
+      {
+        "src": "images/astm-testing/woven-d3039-samples.jpg",
+        "caption": "Woven D3039 samples"
+      },
+      {
+        "src": "images/astm-testing/d3518-in-plane-shear-plies.jpg",
+        "caption": "D3518 in-plane shear plies"
+      },
+      {
+        "src": "images/astm-testing/d3518-shear-coupons.jpg",
+        "caption": "D3518 shear coupons"
+      },
+      {
+        "src": "images/astm-testing/characterization-plies.jpg",
+        "caption": "Characterization plies"
+      }
+    ]
+  },
+  "composite-layups": {
+    "title": "Composite Layups",
+    "cover": "images/composite-layups/2025-hood-on-the-car.jpg",
+    "images": [
+      {
+        "src": "images/composite-layups/2025-hood-on-the-car.jpg",
+        "caption": "2025 hood on the car"
+      },
+      {
+        "src": "images/composite-layups/hood-layup.jpg",
+        "caption": "Hood layup"
+      },
+      {
+        "src": "images/composite-layups/body-panel-layup.jpg",
+        "caption": "Body panel layup"
+      },
+      {
+        "src": "images/composite-layups/aero-hoop-under-vacuum.jpg",
+        "caption": "Aero hoop under vacuum"
+      },
+      {
+        "src": "images/composite-layups/quarter-turn-fasteners.jpg",
+        "caption": "Quarter-turn fasteners"
+      },
+      {
+        "src": "images/composite-layups/seat-fitting.jpg",
+        "caption": "Seat fitting"
+      },
+      {
+        "src": "images/composite-layups/seat-foam-for-cnc.jpg",
+        "caption": "Seat foam for CNC"
+      },
+      {
+        "src": "images/composite-layups/pedal-box-layup.jpg",
+        "caption": "Pedal box layup"
+      },
+      {
+        "src": "images/composite-layups/ecvt-case-wet-layup.jpg",
+        "caption": "eCVT case wet layup"
+      },
+      {
+        "src": "images/composite-layups/prop-shaft-guard-layup.jpg",
+        "caption": "Prop shaft guard layup"
+      },
+      {
+        "src": "images/composite-layups/smaller-shaft-layup.jpg",
+        "caption": "Smaller shaft layup"
+      },
+      {
+        "src": "images/composite-layups/prop-shaft-guard-installed.jpg",
+        "caption": "Prop shaft guard installed"
+      }
+    ]
+  },
+  "steering-inserts": {
+    "title": "Steering Wheel Inserts",
+    "cover": "images/steering-inserts/final-machined-inserts.jpg",
+    "images": [
+      {
+        "src": "images/steering-inserts/final-machined-inserts.jpg",
+        "caption": "Final machined inserts"
+      },
+      {
+        "src": "images/steering-inserts/inserts.jpg",
+        "caption": "Inserts"
+      },
+      {
+        "src": "images/steering-inserts/drawings-stock.jpg",
+        "caption": "Drawings & stock"
+      },
+      {
+        "src": "images/steering-inserts/steering-wheel-assembled.jpg",
+        "caption": "Steering wheel assembled"
+      },
+      {
+        "src": "images/steering-inserts/wheel-before-grips.jpg",
+        "caption": "Wheel before grips"
+      },
+      {
+        "src": "images/steering-inserts/cockpit-mockup.jpg",
+        "caption": "Cockpit mockup"
+      }
+    ]
+  },
+  "headrest-safety": {
+    "title": "Fire Ext. Tabs & Headrest",
+    "cover": "images/headrest-safety/headrest.jpg",
+    "images": [
+      {
+        "src": "images/headrest-safety/headrest.jpg",
+        "caption": "Headrest"
+      },
+      {
+        "src": "images/headrest-safety/riveted-headrest.jpg",
+        "caption": "Riveted headrest"
+      },
+      {
+        "src": "images/headrest-safety/waterjet-backplate.jpg",
+        "caption": "Waterjet backplate"
+      },
+      {
+        "src": "images/headrest-safety/headrest-after-competition.jpg",
+        "caption": "Headrest after competition"
+      },
+      {
+        "src": "images/headrest-safety/fire-extinguisher-tabs-mount.jpg",
+        "caption": "Fire extinguisher tabs & mount"
+      }
+    ]
+  },
+  "radio-holder": {
+    "title": "Radio Holder",
+    "cover": "images/radio-holder/finished-radio-holder.jpg",
+    "images": [
+      {
+        "src": "images/radio-holder/finished-radio-holder.jpg",
+        "caption": "Finished radio holder"
+      },
+      {
+        "src": "images/radio-holder/post-processing.jpg",
+        "caption": "Post-processing"
+      },
+      {
+        "src": "images/radio-holder/3d-printed-mold-prep.jpg",
+        "caption": "3D-printed mold prep"
+      }
+    ]
+  },
+  "cf-clipboard": {
+    "title": "Carbon Fiber Clipboard",
+    "cover": "images/cf-clipboard/carbon-fiber-clipboard.jpg",
+    "images": [
+      {
+        "src": "images/cf-clipboard/carbon-fiber-clipboard.jpg",
+        "caption": "Carbon fiber clipboard"
+      },
+      {
+        "src": "images/cf-clipboard/clipboard-me161.jpg",
+        "caption": "Clipboard (ME161)"
+      },
+      {
+        "src": "images/cf-clipboard/layup-plies.jpg",
+        "caption": "Layup plies"
+      },
+      {
+        "src": "images/cf-clipboard/under-vacuum.jpg",
+        "caption": "Under vacuum"
+      }
+    ]
+  },
+  "lathe-lab": {
+    "title": "Precision Lathe Work",
+    "cover": "images/lathe-lab/finished-lathe-part.jpg",
+    "images": [
+      {
+        "src": "images/lathe-lab/finished-lathe-part.jpg",
+        "caption": "Finished lathe part"
+      },
+      {
+        "src": "images/lathe-lab/on-the-lathe.jpg",
+        "caption": "On the lathe"
+      },
+      {
+        "src": "images/lathe-lab/caliper-inspection.jpg",
+        "caption": "Caliper inspection"
+      },
+      {
+        "src": "images/lathe-lab/part-drawing.jpg",
+        "caption": "Part drawing"
+      }
+    ]
+  },
+  "baja-team": {
+    "title": "Cal Poly Racing",
+    "cover": "images/baja-team/car-after-arizona-competition.jpg",
+    "images": [
+      {
+        "src": "images/baja-team/car-after-arizona-competition.jpg",
+        "caption": "Car after Arizona competition"
+      },
+      {
+        "src": "images/baja-team/car-with-arizona-awards.jpg",
+        "caption": "Car with Arizona awards"
+      },
+      {
+        "src": "images/baja-team/cal-poly-racing-crew.jpg",
+        "caption": "Cal Poly Racing crew"
+      }
+    ]
+  }
+}
