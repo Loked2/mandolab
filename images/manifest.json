@@ -72,10 +72,6 @@
       {
         "src": "images/flying-wing/vibration-test-setup.jpg",
         "caption": "Vibration test setup"
-      },
-      {
-        "src": "images/flying-wing/1st-place-plaque.jpg",
-        "caption": "1st place plaque"
       }
     ]
   },
@@ -250,6 +246,10 @@
       {
         "src": "images/steering-inserts/cockpit-mockup.jpg",
         "caption": "Cockpit mockup"
+      },
+      {
+        "src": "images/steering-inserts/cockpit-mockup-rendering.jpg",
+        "caption": "Cockpit mockup rendering"
       }
     ]
   },
