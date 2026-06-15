@@ -18,6 +18,14 @@
     });
   }
 
+  /* ---- nav solidify on scroll ----------------------------------------- */
+  var nav = document.querySelector('.nav');
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   /* ---- scroll reveal --------------------------------------------------- */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && reveals.length) {
