@@ -167,15 +167,15 @@
   },
   "composite-layups": {
     "title": "Composite Layups",
-    "cover": "images/composite-layups/2025-hood-on-the-car.jpg",
+    "cover": "images/composite-layups/hood-layup.jpg",
     "images": [
-      {
-        "src": "images/composite-layups/2025-hood-on-the-car.jpg",
-        "caption": "2025 hood on the car"
-      },
       {
         "src": "images/composite-layups/hood-layup.jpg",
         "caption": "Hood layup"
+      },
+      {
+        "src": "images/composite-layups/2025-hood-on-the-car.jpg",
+        "caption": "2025 hood on the car"
       },
       {
         "src": "images/composite-layups/body-panel-layup.jpg",
