@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-Printed Flying Wing, Armando Ramirez</title>
-  <meta name="description" content="3D-Printed Flying Wing, project by Armando Ramirez, Mechanical Engineering, Cal Poly SLO." />
+  <title>3D-Printed Aircraft (3DPAC), Armando Ramirez</title>
+  <meta name="description" content="3D-Printed Aircraft (3DPAC), project by Armando Ramirez, Mechanical Engineering, Cal Poly SLO." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -29,35 +29,66 @@
 
     <header class="detail-head">
       <div>
-        <div class="detail-idx">PROJECT 02 / 11 · Senior Project · Initial Design</div>
-        <h1 class="detail-title">3D-Printed Flying Wing</h1>
-        <p class="detail-lead">The initial design for our senior project, a 3D-printed RC flying wing optimized for high glide ratio, taken from an airfoil study through material testing and structural FEA before the team iterated to an updated competition design.</p>
+        <div class="detail-idx">PROJECT 02 / 11 · Senior Project · 1st Place</div>
+        <h1 class="detail-title">3D-Printed Aircraft (3DPAC)</h1>
+        <p class="detail-lead">Our senior project for the 3D-Printed Aircraft Competition (3DPAC): a fully 3D-printed competition glider judged on flight time. I led the aerodynamic and structural analysis, and the team placed 1st.</p>
       </div>
       <div class="detail-spec corners">
-        <div class="row"><span class="k">Type</span><span class="v">RC flying wing (initial design)</span></div>
-        <div class="row"><span class="k">Objective</span><span class="v">Maximize glide ratio</span></div>
-        <div class="row"><span class="k">Aero</span><span class="v">XFLR5 · 5 airfoils</span></div>
-        <div class="row"><span class="k">Material</span><span class="v">3D-printed PLA (FDM)</span></div>
-        <div class="row"><span class="k">Mat. test</span><span class="v">ASTM D638 tensile</span></div>
-        <div class="row"><span class="k">Structure</span><span class="v">ANSYS Static Structural</span></div>
+        <div class="row"><span class="k">Competition</span><span class="v">3DPAC · Cal State LA</span></div>
+        <div class="row"><span class="k">Result</span><span class="v">1st place</span></div>
+        <div class="row"><span class="k">Config</span><span class="v">Conventional-tail glider</span></div>
+        <div class="row"><span class="k">Span / chord</span><span class="v">1.65 m / 250 mm</span></div>
+        <div class="row"><span class="k">All-up weight</span><span class="v">770 g</span></div>
+        <div class="row"><span class="k">Airfoil</span><span class="v">Clark Y</span></div>
+        <div class="row"><span class="k">L/D (CFD)</span><span class="v">17.1</span></div>
+        <div class="row"><span class="k">Spar FoS</span><span class="v">≈ 2.7</span></div>
       </div>
     </header>
 
+    <div class="role-callout">
+      <span class="rc-label">My Role</span>
+      <p>I owned the analysis backbone: the XFLR5 airfoil study, ASTM D638 tensile characterization of PLA and LW-PLA, the SolidWorks spar finite-element analysis and its physical verification, and the print-temperature study trading LW-PLA foaming (weight) against print quality.</p>
+    </div>
+
     <div class="detail-section-label">Overview</div>
     <div class="detail-prose">
-        <p>The goal was a printable flying wing that glides efficiently. I used XFLR5 to compare five airfoils, MH60, MH45, SD7037, Clark Y, and E325, evaluating lift-to-drag and pitching behavior to choose a section that balances glide performance with the stability a tailless wing demands.</p>
-        <p>Because the airframe is 3D printed in PLA, handbook material values don't apply. I ran ASTM D638 tensile tests on printed coupons to measure real modulus and strength, then fed those into ANSYS Static Structural FEA on the wing spars to confirm they survive flight and wing-loading conditions.</p>
-        <p>I validated the structure physically with a sandbag wing-loading test and a vibration test setup, and printed the wing in segments of varying density to manage mass distribution along the span.</p>
+        <p>The 3DPAC rules require every part to be 3D printed, allow 8 seconds of powered flight, and cap altitude with a 35-foot ceiling, with score set by total flight time. That makes it a glide-endurance problem: minimize drag and wing loading so the aircraft stays aloft as long as possible. The team weighed a flying-wing layout but moved to a conventional-tail glider, which was far more structurally efficient to print.</p>
+        <p>For the aerodynamics I ran an XFLR5 study of six airfoils (Clark Y, Eppler 325, MH45, MH60, NACA 25112, SD7037) at the low Reynolds number of the flight regime, about 1e5. The Clark Y gave the highest lift (Cl near 1.32 at 11 degrees), the gentlest stall, and a low pitching moment, so it became the wing section. A SimScale CFD run on the wing returned a lift-to-drag ratio of 17.1.</p>
+        <p>Because the airframe is printed in PLA, handbook properties do not apply, so I characterized the real material. Following ASTM D638 I modeled and printed dog-bone coupons and pulled them on an Instron: five samples each for longitudinal PLA, transverse PLA, and longitudinal LW-PLA. The curves show the strong anisotropy of FDM parts and quantify the penalty of the lightweight foaming filament.</p>
+        <p>I used those measured properties in a SolidWorks finite-element model of the spar, loaded with the same 11.77 N distributed force as the physical wing-loading rig. Peak principal stress at the root was 16 MPa (11.29 MPa just off the mesh singularity) against a 44.4 MPa ultimate strength, a factor of safety near 2.7, with a 35.18 mm tip deflection. A modal study put the first bending mode at 7.73 Hz and the torsional mode near 46 Hz, far enough apart to rule out flutter.</p>
+        <p>I then verified the model physically. A shake-table test put the first bending mode at 6.5 Hz versus 7.73 Hz in the FEA, a 15.6 percent error. A sandbag wing-loading test loaded the wing to roughly twice the aircraft weight before it failed at the root.</p>
+        <p>Selecting LW-PLA for the skin also meant a print study: I printed parts across a range of nozzle temperatures to trade the filament's active foaming, which can roughly halve density, against print quality, since LW-PLA prints cleanest in zero-retraction spiral-vase mode.</p>
     </div>
 
     <div class="detail-section-label">Highlights</div>
     <div class="detail-prose">
       <ul>
-        <li>Five-airfoil trade study in XFLR5</li>
-        <li>PLA characterized experimentally via ASTM D638</li>
-        <li>Spar FEA in ANSYS using measured material properties</li>
-        <li>Sandbag wing-loading and vibration validation</li>
+        <li>1st place at the 3D-Printed Aircraft Competition (3DPAC)</li>
+        <li>Six-airfoil XFLR5 study selected the Clark Y; CFD lift-to-drag of 17.1</li>
+        <li>ASTM D638 tensile tests (n=5) characterized PLA and LW-PLA</li>
+        <li>Spar FEA: factor of safety near 2.7, 35.18 mm tip deflection</li>
+        <li>Flutter ruled out (7.73 Hz bending vs 46 Hz torsion)</li>
+        <li>FEA verified against a shake-table test within 15.6 percent</li>
       </ul>
+    </div>
+
+    <div class="detail-section-label">Data &amp; Results</div>
+    <div class="datatables">
+      <div class="dt-title">3D-printed material properties (ASTM D638, n = 5)</div>
+      <table class="datatable"><thead><tr><th>Material</th><th>Ultimate tensile (MPa)</th><th>Modulus E (GPa)</th></tr></thead><tbody><tr><td>PLA (longitudinal)</td><td>44.4 ± 7.7</td><td>1.02 ± 0.10</td></tr><tr><td>PLA (transverse)</td><td>32.0 ± 2.1</td><td>0.98 ± 0.07</td></tr><tr><td>LW-PLA (longitudinal)</td><td>4.1 ± 0.9</td><td>0.54 ± 0.05</td></tr></tbody></table>
+      <div class="dt-title">Structural analysis and verification</div>
+      <table class="datatable"><thead><tr><th>Quantity</th><th>Result</th></tr></thead><tbody><tr><td>Peak principal stress (spar root)</td><td>16 MPa</td></tr><tr><td>Factor of safety</td><td>≈ 2.7</td></tr><tr><td>Tip deflection (FEA)</td><td>35.18 mm</td></tr><tr><td>1st bending mode (FEA vs test)</td><td>7.73 Hz vs 6.5 Hz · 15.6%</td></tr></tbody></table>
+      <div class="dt-title">Wing-loading test (tip deflection vs load)</div>
+      <table class="datatable"><thead><tr><th>Applied load (g)</th><th>Tip deflection (mm)</th></tr></thead><tbody><tr><td>600</td><td>44</td></tr><tr><td>1200</td><td>120</td></tr><tr><td>1500</td><td>150 (root failure)</td></tr></tbody></table>
+    </div>
+    <div class="datafig-grid">
+        <figure class="datafig"><img src="../images/flying-wing/fig_drag-polar.jpg" alt="XFLR5 drag polar for six airfoils at Re near 1e5" loading="lazy" /><figcaption>XFLR5 drag polar for six airfoils at Re near 1e5</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_cfd-velocity.jpg" alt="SimScale CFD velocity field over the wing (L/D 17.1)" loading="lazy" /><figcaption>SimScale CFD velocity field over the wing (L/D 17.1)</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_pla-stress-strain.jpg" alt="PLA stress-strain: longitudinal (n=5) vs transverse, ASTM D638" loading="lazy" /><figcaption>PLA stress-strain: longitudinal (n=5) vs transverse, ASTM D638</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_lwpla-stress-strain.jpg" alt="LW-PLA stress-strain, longitudinal (n=5)" loading="lazy" /><figcaption>LW-PLA stress-strain, longitudinal (n=5)</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_spar-stress.jpg" alt="SolidWorks spar FEA: peak principal stress at the root" loading="lazy" /><figcaption>SolidWorks spar FEA: peak principal stress at the root</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_spar-deflection.jpg" alt="Spar FEA: 35.18 mm tip deflection under the rig load" loading="lazy" /><figcaption>Spar FEA: 35.18 mm tip deflection under the rig load</figcaption></figure>
+        <figure class="datafig"><img src="../images/flying-wing/fig_wing-loading.jpg" alt="Physical wing-loading rig used to verify the FEA" loading="lazy" /><figcaption>Physical wing-loading rig used to verify the FEA</figcaption></figure>
     </div>
 
     <div class="detail-section-label">Gallery / 09 frames</div>

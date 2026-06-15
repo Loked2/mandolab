@@ -389,6 +389,28 @@ a { color: inherit; text-decoration: none; }
 .detail-prose li { position: relative; padding-left: 1.6rem; margin-bottom: 0.7rem; color: var(--text-2); font-size: 1.05rem; line-height: 1.6; }
 .detail-prose li::before { content: ''; position: absolute; left: 0; top: 0.75em; width: 11px; height: 1px; background: var(--accent); }
 
+/* role callout */
+.role-callout { border-left: 2px solid var(--text); background: var(--panel); padding: 1.1rem 1.3rem; margin-top: 2.2rem; max-width: 72ch; }
+.role-callout .rc-label { display: block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.role-callout p { font-size: 1.05rem; line-height: 1.65; color: var(--text); margin: 0; }
+
+/* data tables */
+.dt-title { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--text-2); margin: 1.6rem 0 0.6rem; }
+.datatable { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 0.8rem; border: 1px solid var(--line); margin-bottom: 0.5rem; }
+.datatable th, .datatable td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--line-2); text-align: left; }
+.datatable thead th { color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.62rem; border-bottom: 1px solid var(--line); }
+.datatable thead th:not(:first-child) { text-align: right; }
+.datatable tbody td:first-child { color: var(--text-2); }
+.datatable tbody td:not(:first-child) { color: var(--text); text-align: right; }
+.datatable tbody tr:last-child td { border-bottom: 0; }
+
+/* data figures */
+.datafig-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.4rem; }
+.datafig { border: 1px solid var(--line); background: var(--panel); overflow: hidden; }
+.datafig img { width: 100%; height: auto; display: block; background: #fff; }
+.datafig figcaption { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--text-2); padding: 0.6rem 0.8rem; border-top: 1px solid var(--line); }
+@media (max-width: 760px) { .datafig-grid { grid-template-columns: 1fr; } }
+
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; grid-auto-flow: dense; }
 .gallery figure { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--bg-2); cursor: zoom-in; aspect-ratio: 4/3; }
 .gallery figure.wide { grid-column: span 2; }
