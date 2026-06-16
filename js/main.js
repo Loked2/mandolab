@@ -39,18 +39,6 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---- live clock readout (nav) --------------------------------------- */
-  var clock = document.querySelector('[data-clock]');
-  if (clock) {
-    var tick = function () {
-      var d = new Date();
-      var p = function (n) { return String(n).padStart(2, '0'); };
-      clock.textContent = 'SLO ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
-    };
-    tick();
-    setInterval(tick, 1000);
-  }
-
   /* ---- lightbox (project detail galleries) ----------------------------- */
   var gallery = document.querySelector('[data-gallery]');
   if (!gallery) return;
