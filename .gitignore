@@ -1,2 +1,5 @@
 # Source video masters (large) — only the optimized web exports are tracked
 *.mov
+
+# Local planning docs — not for the public site
+_PROJECT-IDEAS.md
