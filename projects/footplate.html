@@ -30,13 +30,14 @@
       <div>
         <div class="detail-idx">PROJECT 01 / 11 · Baja SAE</div>
         <h1 class="detail-title">Composite Footplate</h1>
-        <p class="detail-lead">A structural sandwich-panel footplate for the Baja SAE car, three plies of carbon fiber per face over a Nomex honeycomb core, sized with FEA and proven with physical bend testing.</p>
+        <p class="detail-lead">A structural sandwich-panel footplate for the Baja SAE car, carbon fiber faces over a Nomex honeycomb core. The ANSYS model was validated against bend tests at the sample level, then applied to the full geometry to verify deflection clearance.</p>
       </div>
       <div class="detail-spec corners">
         <div class="row"><span class="k">Application</span><span class="v">Baja SAE driver footplate</span></div>
+        <div class="row"><span class="k">Requirement</span><span class="v">Deflection within clearance</span></div>
         <div class="row"><span class="k">Faces</span><span class="v">3-ply carbon fiber</span></div>
         <div class="row"><span class="k">Core</span><span class="v">Nomex honeycomb</span></div>
-        <div class="row"><span class="k">Analysis</span><span class="v">ANSYS ACP</span></div>
+        <div class="row"><span class="k">Analysis</span><span class="v">ANSYS · ACP</span></div>
         <div class="row"><span class="k">Validation</span><span class="v">3-point bend · 4 layups</span></div>
         <div class="row"><span class="k">Season</span><span class="v">2024-2025</span></div>
       </div>
@@ -44,22 +45,24 @@
 
     <div class="role-callout">
       <span class="rc-label">My Role</span>
-      <p>I modeled the sandwich panel in ANSYS ACP, fabricated the four candidate layups, and ran the three-point bend tests that selected the final design.</p>
+      <p>I built the ANSYS bending models, fabricated and bend-tested the four candidate layups that validated them, and carried the validated methodology into the full footplate analysis.</p>
     </div>
 
     <div class="detail-section-label">Overview</div>
     <div class="detail-prose">
-        <p>The footplate carries the driver's foot loads while the car pounds through desert terrain, so it needed high stiffness-to-weight and reliable impact behavior. I modeled the panel as a composite sandwich in ANSYS ACP, applying representative foot loading to compare deflection and failure indices across core and face options.</p>
-        <p>To validate the simulation I fabricated four candidate sandwich configurations (carbon/Nomex, carbon/balsa, fiberglass/Nomex, and fiberglass/wood) and ran three-point bend tests on each. The carbon/Nomex layup gave the best stiffness-to-weight, matching the analytical ranking, and became the final design.</p>
+        <p>The footplate sits between the driver's feet and the front of the car, so it has a hard requirement beyond carrying foot loads: under load, its total deflection must stay within a clearance tolerance so the plate cannot contact rotating components or any hazardous release of energy. That turned the analysis into a displacement problem with a pass/fail criterion, not just a strength check.</p>
+        <p>Rather than trust an unvalidated model on safety-relevant hardware, I validated the simulation first at the sample level. I fabricated four candidate sandwich configurations (carbon/Nomex, carbon/balsa, fiberglass/Nomex, and fiberglass/wood), ran three-point bend tests on each, and compared the flexural stiffness from each sample's force-displacement curve against an ANSYS simulation of the same bending case.</p>
+        <p>With the model matching test at the coupon level, the same methodology went into an ANSYS ACP model of the real footplate geometry under representative foot loading to predict total displacement against the clearance requirement. The carbon/Nomex layup gave the best stiffness-to-weight of the four candidates, matching the analytical ranking, and became the final design on the 2025 car.</p>
     </div>
 
     <div class="detail-section-label">Highlights</div>
     <div class="detail-prose">
       <ul>
-        <li>Composite sandwich modeled in ANSYS ACP under driver foot loading</li>
+        <li>Displacement requirement: no contact with rotating components or stored energy under load</li>
+        <li>ANSYS bending model validated against measured force-displacement stiffness</li>
         <li>Four candidate layups fabricated and bend-tested head-to-head</li>
-        <li>Carbon/Nomex selected for best stiffness-to-weight</li>
-        <li>Installed on the competition vehicle for the 2025 season</li>
+        <li>Validated methodology applied to the full footplate geometry in ANSYS ACP</li>
+        <li>Carbon/Nomex selected for best stiffness-to-weight, ran the 2025 season</li>
       </ul>
     </div>
 
